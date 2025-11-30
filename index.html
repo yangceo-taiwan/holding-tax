@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>不動產稅務全攻略 - 宏國地政｜易丞地政</title>
+    <meta name="description" content="買房、持屋、賣房到底要繳哪些稅？房屋稅、地價稅、房地合一稅一次搞懂！宏國地政｜易丞地政專業解析。">
+    
+    <style>
+        :root {
+            --primary-color: #1a5f7a;   /* 品牌深藍 */
+            --accent-color: #d4a017;    /* 品牌金 */
+            --bg-color: #f4f7f6;        /* 淺灰背景 */
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --highlight-red: #e74c3c;   /* 重點紅 */
+            --section-hold: #e3f2fd;    /* 持有階段底色 */
+            --section-trade: #fff3e0;   /* 買賣階段底色 */
+            --section-sell: #ffebee;    /* 獲利階段底色 */
+        }
+
+        body {
+            font-family: "Microsoft JhengHei", "Heiti TC", sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* --- Header --- */
+        header {
+            background-color: var(--card-bg);
+            padding: 30px 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            margin-bottom: 30px;
+            border-top: 6px solid var(--accent-color);
+        }
+
+        /* 雙 Logo 排列 */
+        .logo-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .logo-img {
+            max-height: 70px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin: 10px 0;
+            font-size: 1.8em;
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        /* --- 引言區塊 --- */
+        .intro-box {
+            background: linear-gradient(135deg, #1a5f7a 0%, #2c3e50 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(26, 95, 122, 0.3);
+        }
+        .intro-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+
+        /* --- 稅務三階段卡片 --- */
+        .tax-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .tax-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            border-left: 5px solid #ccc;
+            position: relative;
+            transition: transform 0.3s;
+        }
+        .tax-card:hover { transform: translateY(-5px); }
+
+        .tax-card h3 { margin-top: 0; font-size: 1.4em; display: flex; align-items: center; gap: 10px; }
+        
+        /* 各階段配色 */
+        .card-hold { border-left-color: #2196f3; background-color: var(--section-hold); }
+        .card-hold h3 { color: #1565c0; }
+        
+        .card-trade { border-left-color: #ff9800; background-color: var(--section-trade); }
+        .card-trade h3 { color: #ef6c00; }
+        
+        .card-sell { border-left-color: #f44336; background-color: var(--section-sell); }
+        .card-sell h3 { color: #c62828; }
+
+        .tax-items {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin: 15px 0;
+            color: #333;
+        }
+        
+        .tax-desc { font-size: 0.95em; color: #555; }
+        .highlight { color: var(--highlight-red); font-weight: bold; background: #fff; padding: 2px 5px; border-radius: 4px; }
+
+        /* --- 圖片樣式 (New) --- */
+        .img-box {
+            margin: 30px 0;
+            background-color: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .img-box h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-size: 1.2em;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .content-img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto 15px auto;
+        }
+
+        /* --- 影片區塊 --- */
+        .video-section {
+            margin-top: 40px;
+        }
+        .section-title {
+            text-align: center;
+            color: var(--primary-color);
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            font-size: 1.5em;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            background: #000;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%; border: 0;
+        }
+        
+        .video-info { padding: 20px; }
+        .video-title { font-weight: bold; font-size: 1.2em; color: var(--primary-color); margin-bottom: 5px; }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            color: #666;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.03);
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--line-green);
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 15px;
+            box-shadow: 0 4px 10px rgba(6, 199, 85, 0.3);
+            transition: 0.3s;
+        }
+        .cta-btn:hover { background-color: #05a546; transform: scale(1.05); }
+
+        @media (min-width: 768px) {
+            .tax-grid { grid-template-columns: 1fr 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <header>
+        <div class="logo-wrapper">
+            <img src="宏國地政封面.jpg" alt="宏國地政 Logo" class="logo-img">
+            <img src="易丞logo-01.jpg" alt="易丞地政 Logo" class="logo-img">
+        </div>
+        <h1>💰 不動產稅務全攻略</h1>
+        <div class="subtitle">買賣 x 持有 x 移轉｜一次搞懂政府收什麼錢</div>
+    </header>
+
+    <div class="intro-box">
+        <div class="intro-title">🤔 你以為買房只要繳房貸嗎？</div>
+        <p>其實從<strong>「買」、「持有」到「賣」</strong>三個階段，政府都在收錢！💰</p>
+        <p style="margin-top:10px;">很多人問我們：「是不是都要繳？」<br>
+        👉 不一定，但只要少報一個，可能會被罰款、被追稅，甚至不能過戶！</p>
+    </div>
+
+    <div class="tax-grid">
+        
+        <div class="tax-card card-hold">
+            <h3>📍 持有房產</h3>
+            <div class="tax-items">🏠 房屋稅 <br>+ 🌏 地價稅</div>
+            <div class="tax-desc">
+                每年都要繳！<br>
+                注意：地價若上漲，還可能越繳越多。
+            </div>
+        </div>
+
+        <div class="tax-card card-trade">
+            <h3>📍 買賣過程</h3>
+            <div class="tax-items">🧾 契稅 <br>+ 📝 印花稅</div>
+            <div class="tax-desc">
+                不要忽略隱形成本！<br>
+                連合約成立都要課稅，交屋前必須結清。
+            </div>
+        </div>
+
+        <div class="tax-card card-sell">
+            <h3>📍 賣屋所得</h3>
+            <div class="tax-items">💸 房地合一稅</div>
+            <div class="tax-desc">
+                <span class="highlight">最容易誤會！</span><br>
+                持有時間、用途不同，稅率最高可達 <span class="highlight">45%</span>！
+            </div>
+        </div>
+
+    </div>
+
+    <div class="img-box" style="border: 2px solid #2196f3; background-color:#e3f2fd;">
+        <h3>💡 一張圖秒懂：房屋稅 vs 地價稅</h3>
+        <p style="margin-bottom:15px; color:#555;">持有不動產每年必繳的兩大稅，到底差在哪？</p>
+        <img src="589889114321715546.jpg" alt="房屋稅與地價稅比較" class="content-img">
+    </div>
+
+    <div class="video-section">
+        <h2 class="section-title">📺 專家影音解析</h2>
+
+        <div class="video-card">
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/1X-3-p50Qt8" allowfullscreen></iframe>
+            </div>
+            <div class="video-info">
+                <div class="video-title">一、持有不動產及移轉，要繳納哪些稅金❓</div>
+                <p>詳細解析各階段稅務結構，讓您不再霧煞煞。</p>
+            </div>
+        </div>
+
+        <div class="video-card">
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/Va1g60-rAYU" allowfullscreen></iframe>
+            </div>
+            <div class="video-info">
+                <div class="video-title">二、房屋稅提醒通知‼️ 囤房稅帶來什麼變化❓</div>
+                <p>多屋族必看！新制上路後對您的稅金有什麼影響？</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="img-box" style="border: 2px solid #ff9800; background-color:#fff3e0;">
+        <h3>📊 囤房稅 2.0 稅率與級距對照表</h3>
+        <p style="margin-bottom:15px; color:#555;">搭配影片二觀看，更清楚您的稅率落點！</p>
+        
+        <p style="text-align:left; font-weight:bold; color:#e65100;">▼ 房屋稅差別稅率級距</p>
+        <img src="589889114540343824.jpg" alt="房屋稅差別稅率級距" class="content-img">
+        
+        <p style="text-align:left; font-weight:bold; color:#e65100; margin-top:20px;">▼ 新制與租金標準參考</p>
+        <img src="589889114540343297.jpg" alt="房屋稅新制與租金標準" class="content-img">
+    </div>
+
+    <footer>
+        <p>想知道您屬於哪種稅務狀況？<br>歡迎加入官方 LINE，我們為您做實例分析！</p>
+        
+        <a href="https://line.me/ti/g2/aVklWxyLP1RtfstQsslGQOlP4KViuFI7PPucdQ?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="cta-btn">
+            💬 加入宏國地政研究院
+        </a>
+
+        <div style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
+            <p><strong>宏國地政 × 易丞地政</strong><br>
+            專業、效率、透明，是我們的承諾。</p>
+            <p>📞 電話：<a href="tel:062582589" style="color:#666;text-decoration:none;">06-2582589</a><br>
+            📮 地址：台南市北區文賢路1080巷11號</p>
+        </div>
+    </footer>
+
+</div>
+
+</body>
+</html>
