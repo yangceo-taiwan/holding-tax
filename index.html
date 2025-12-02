@@ -218,6 +218,88 @@
         @media (min-width: 768px) {
             .tax-grid { grid-template-columns: 1fr 1fr 1fr; }
         }
+
+        /* --- 懸浮行動按鈕 (Floating Action Buttons, FABs) --- */
+        /* FABs 容器：固定在右下角 */
+        .fab-container {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            display: flex;
+            flex-direction: column; /* 垂直堆疊 */
+            align-items: center;
+            gap: 15px; /* 按鈕間距 */
+            z-index: 1000; /* 確保浮在最上層 */
+        }
+
+        /* 單一 FAB 按鈕基礎樣式 */
+        .fab-button {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease; /* 流暢的微互動動畫 */
+            text-decoration: none;
+            color: white; /* 圖標顏色 */
+            font-size: 1.5em; /* 圖標大小 */
+        }
+
+        /* 懸停/點擊效果 (微互動) */
+        .fab-button:hover {
+            transform: scale(1.1); /* 輕微放大 */
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* --- 顏色主題設定 --- */
+        /* 加入社團 (使用 LINE 綠) */
+        .fab-join {
+            --line-green: #06c755;
+            background-color: var(--line-green);
+        }
+        .fab-join:hover {
+            background-color: #05a546;
+        }
+
+        /* 五星好評 (使用品牌金/橙色) */
+        .fab-review {
+            background-color: var(--accent-color); /* 品牌金 #d4a017 */
+            /* 為了在按鈕上顯示文字，調整尺寸與排版 */
+            width: auto;
+            padding: 0 15px;
+            border-radius: 30px; /* 藥丸形狀 */
+            font-size: 0.9em;
+            font-weight: bold;
+            height: 40px;
+            line-height: 40px; /* 確保文字垂直居中 */
+        }
+        .fab-review:hover {
+            background-color: #a78012;
+        }
+
+        /* 手機版適應：在小螢幕上將按鈕稍微縮小一點 */
+        @media (max-width: 600px) {
+            .fab-container {
+                right: 15px;
+                bottom: 15px;
+                gap: 10px;
+            }
+            .fab-button {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3em;
+            }
+            .fab-review {
+                width: auto;
+                padding: 0 12px;
+                height: 36px;
+                line-height: 36px;
+                font-size: 0.8em;
+            }
+        }
     </style>
 </head>
 <body>
@@ -327,6 +409,18 @@
         </div>
     </footer>
 
+</div>
+
+<div class="fab-container">
+
+    <a href="https://g.page/r/CcUysPsgjeseEAI/review" target="_blank" class="fab-button fab-review" title="給我們五星好評！">
+        ⭐⭐⭐⭐⭐ 評論
+    </a>
+
+    <a href="https://line.me/ti/g2/aVklWxyLP1RtfstQsslGQOlP4KViuFI7PPucdQ?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="fab-button fab-join" title="加入 LINE 研究社">
+        💬
+    </a>
+    
 </div>
 
 </body>
