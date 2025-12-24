@@ -26,6 +26,11 @@
             padding: 20px;
             color: var(--text-color);
             line-height: 1.6;
+            /* 禁止選取文字，增加複製難度 */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         .container {
@@ -152,6 +157,8 @@
             border-radius: 8px;
             display: block;
             margin: 0 auto 15px auto;
+            /* 防止圖片被拖曳下載 */
+            pointer-events: none;
         }
 
         /* --- 影片區塊 --- */
@@ -246,6 +253,9 @@
             text-decoration: none;
             color: white; /* 圖標顏色 */
             font-size: 1.5em; /* 圖標大小 */
+            /* 恢復按鈕的可點擊性，覆蓋 body 的 user-select: none */
+            user-select: auto;
+            pointer-events: auto;
         }
 
         /* 懸停/點擊效果 (微互動) */
@@ -302,7 +312,7 @@
         }
     </style>
 </head>
-<body>
+<body oncontextmenu="return false">
 
 <div class="container">
     
@@ -423,5 +433,40 @@
     
 </div>
 
+<script>
+    // 1. 禁止右鍵選單 (Context Menu)
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
+    // 2. 禁止常用開發者快捷鍵
+    document.onkeydown = function(e) {
+        // F12 (開啟開發者工具)
+        if(e.keyCode == 123) {
+            return false;
+        }
+        // Ctrl+Shift+I (開啟開發者工具)
+        if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+            return false;
+        }
+        // Ctrl+Shift+C (開啟元素檢查)
+        if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+            return false;
+        }
+        // Ctrl+Shift+J (開啟控制台)
+        if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+            return false;
+        }
+        // Ctrl+U (檢視原始碼)
+        if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+            return false;
+        }
+        // Ctrl+S (另存新檔)
+        if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
+            return false;
+        }
+    }
+    
+    // 3. 額外防護：禁止圖片拖曳 (已在 CSS 中加入 pointer-events: none, 這裡做全局備援)
+    document.ondragstart = function() { return false; };
+</script>
 </body>
 </html>
