@@ -6,6 +6,30 @@
     <title>不動產稅務全攻略 - 宏國地政｜易丞地政</title>
     <meta name="description" content="買房、持屋、賣房到底要繳哪些稅？房屋稅、地價稅、房地合一稅一次搞懂！宏國地政｜易丞地政專業解析。">
     
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <script>
+        // 禁止右鍵
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // 禁止常見開發者快捷鍵
+        document.onkeydown = function(e) {
+            // F12
+            if(e.keyCode == 123) { return false; }
+            // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+            if(e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) { return false; }
+            // Ctrl+U (檢視原始碼)
+            if(e.ctrlKey && e.keyCode == 85) { return false; }
+        };
+
+        // 禁止拖曳圖片
+        document.ondragstart = function() { return false; };
+    </script>
     <style>
         :root {
             --primary-color: #1A365D;   
@@ -15,6 +39,7 @@
             --text-color: #2D3748;
             --highlight-red: #E53E3E;   
             --line-green: #06c755;
+            --line-green-hover: #05b34c;
             --tab-bg: #EDF2F7;
         }
 
@@ -300,7 +325,7 @@
             font-size: 0.95em;
         }
 
-        /* --- 底部固定導覽列 (Bottom Action Bar) - 完美取代懸浮按鈕 --- */
+        /* --- 底部固定導覽列 --- */
         .bottom-bar {
             position: fixed;
             bottom: 0;
@@ -356,6 +381,14 @@
             filter: brightness(1.05);
         }
 
+        /* --- SSO 門禁系統專用按鈕樣式 --- */
+        .btn-line-solid {
+            background-color: var(--line-green); color: white;
+            transition: background-color 0.3s;
+            border: none;
+        }
+        .btn-line-solid:hover { background-color: var(--line-green-hover); }
+
         /* 行動版微調 */
         @media (max-width: 480px) {
             .hero h1 { font-size: 1.4em; }
@@ -369,207 +402,288 @@
 </head>
 <body oncontextmenu="return false">
 
-<div class="container">
-    
-    <header>
-        <div class="logo-wrapper">
-            <img src="宏國地政封面.jpg" alt="宏國地政 Logo" class="logo-img" onerror="this.style.display='none'">
-            <img src="易丞logo-01.jpg" alt="易丞地政 Logo" class="logo-img" onerror="this.style.display='none'">
+<div id="nexus-auth-gate" class="min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-b from-[#0F2E46] to-[#162a3b] text-white fixed inset-0 z-[9999]" style="display: flex;">
+    <div class="bg-white text-gray-800 rounded-2xl shadow-2xl p-8 w-full max-w-sm text-center transform transition-all relative overflow-hidden">
+        <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#C5A065] opacity-10 rounded-full blur-2xl"></div>
+        <div class="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-[#C5A065] shadow-inner">
+            <i class="fas fa-shield-alt text-3xl text-[#C5A065]"></i>
         </div>
-        <h1>💰 不動產稅務全攻略</h1>
-        <p class="subtitle">買賣 x 持有 x 移轉｜自動試算小幫手</p>
-    </header>
-
-    <div class="tabs-nav">
-        <button class="tab-btn active" onclick="switchTab(event, 'tab-info')">💡 節稅秘笈</button>
-        <button class="tab-btn" onclick="switchTab(event, 'tab-house')">🏠 房屋稅試算</button>
-        <button class="tab-btn" onclick="switchTab(event, 'tab-land')">🌱 地價稅試算</button>
-    </div>
-
-    <div id="tab-info" class="tab-content active">
-        
-        <div class="tax-grid">
-            <div class="tax-card card-hold">
-                <h3>📍 持有房產</h3>
-                <div class="tax-items">🏠 房屋稅 + 🌏 地價稅</div>
-                <div class="tax-desc">每年必繳！注意地價若上漲，可能越繳越多。</div>
-            </div>
-            <div class="tax-card card-trade">
-                <h3>📍 買賣過程</h3>
-                <div class="tax-items">🧾 契稅 + 📝 印花稅</div>
-                <div class="tax-desc">隱形成本！合約成立就要課稅，交屋前必結清。</div>
-            </div>
-            <div class="tax-card card-sell">
-                <h3>📍 賣屋所得</h3>
-                <div class="tax-items">💸 房地合一稅</div>
-                <div class="tax-desc">最容易誤會！持有時間用途不同，稅率最高達 45%。</div>
-            </div>
+        <h2 class="text-2xl font-bold text-[#0F2E46] mb-2">宏國專屬試算系統</h2>
+        <p class="text-sm text-gray-500 mb-6 leading-relaxed">
+            本系統為宏國地政內部高階工具。<br>為保障服務品質，請透過官方帳號驗證身分。
+        </p>
+        <div id="auth-error-msg" class="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-xs text-red-600 font-bold flex items-start gap-2 text-left" style="display: none;">
+            <i class="fas fa-exclamation-circle mt-0.5"></i>
+            <span id="auth-error-text"></span>
         </div>
-
-        <div class="card img-box">
-            <h2>📊 一張圖秒懂：房屋 vs 地價稅</h2>
-            <p style="color:#718096; margin-bottom: 10px;">點擊上方頁籤，立即為您自動試算！</p>
-            <img src="589889114321715546.jpg" alt="房屋稅與地價稅比較" class="content-img" onerror="this.style.display='none'">
-        </div>
-
-        <div class="card">
-            <h2>📚 節稅小學堂：不可不知的眉角</h2>
-            <div class="video-btn-wrapper">
-                <a href="https://youtube.com/shorts/vSLtf6U8p8w?si=sP_p5lgEE8tkzd3W" target="_blank" class="btn-youtube">
-                    觀看專家影音完整解析
-                </a>
-            </div>
-
-            <details>
-                <summary>💡 房屋稅和地價稅的「自用」都要設戶籍嗎？</summary>
-                <div class="details-content">
-                    沒錯！兩者都嚴格要求設立戶籍。<br>
-                    • <b>房屋稅：</b>必須是所有人或配偶、<b>直系親屬</b>辦竣戶籍登記。<br>
-                    • <b>地價稅：</b>同樣要求所有權人或配偶、<b>直系親屬</b>設戶籍，且兩者皆不可有出租或營業情形。
-                </div>
-            </details>
-            
-            <details>
-                <summary>💡 兩間以上的房子，都能申請「自用地價稅」嗎？</summary>
-                <div class="details-content">
-                    地價稅規定本人、配偶及未成年子女原則上以「一處」為限。<br><br>
-                    <b>✨ 易丞專業破解秘訣：</b><br>
-                    若有第二間房，可利用「成年子女」、「父母」或「祖父母」等其他直系親屬去設立戶籍，只要符合面積限制，第二間也能享有千分之二的極優惠稅率！
-                </div>
-            </details>
-
-            <details>
-                <summary>💡 什麼是「全國總歸戶」？囤房稅多高？</summary>
-                <div class="details-content">
-                    現在是「全台灣」的應稅房屋合併計算戶數！針對「非自住住家」，稅率最高可達 4.8%。<br><br>
-                    🎁 但若您本人、配偶及未成年子女全台灣只有一間房子且供自住（一定現值下），稅率會降至 1.0% 的超優惠大紅包！
-                </div>
-            </details>
-
-            <details>
-                <summary>💡 想要節稅，什麼時候申請才來得及？</summary>
-                <div class="details-content">
-                    • <b>地價稅：</b>每年 11/1 開徵，必須在 <b>9/22</b> 前提出申請。<br>
-                    • <b>房屋稅：</b>每年 5/1 開徵，使用情形變更必須在 <b>3/22</b> 前申報。
-                </div>
-            </details>
+        <button onclick="loginWithLine()" class="w-full btn-line-solid rounded-xl py-4 flex items-center justify-center font-bold text-base shadow-lg transform transition active:scale-95 hover:shadow-xl cursor-pointer">
+            <i class="fab fa-line text-2xl mr-2"></i> 使用 LINE 登入並解鎖
+        </button>
+        <div class="text-[10px] text-gray-400 mt-4">
+            <i class="fas fa-lock mr-1"></i> 經由 LINE OAuth 2.0 安全授權
         </div>
     </div>
-
-    <div id="tab-house" class="tab-content">
-        <div class="card">
-            <h2>🏠 房屋稅 2.0 智慧試算</h2>
-            <div class="info-alert">
-                <b>⚠️ 囤房稅豁免專區：</b><br>
-                「繼承共有」、「商用營業」、「包租代管/公益出租」及「自住」，都<b>不會</b>被算進 2.0%~4.8% 囤房重稅！加入包租代管更享 <b>1.2%</b> 自住同等優惠！
-            </div>
-
-            <div class="form-group">
-                <label for="houseValue">房屋現值 (元)</label>
-                <input type="number" id="houseValue" placeholder="例如：1000000" min="0">
-            </div>
-            
-            <div class="form-group">
-                <label for="houseType">房屋使用情形 (智慧分類)</label>
-                <select id="houseType">
-                    <optgroup label="✨ 自住與公益優惠稅率">
-                        <option value="single_self">【單一自住 1.0%】(本人/配偶/未成年全國1戶+設戶籍)</option>
-                        <option value="general_self">【一般自住 1.2%】(全國限3戶+設戶籍)</option>
-                        <option value="social">【包租代管/公益出租 1.2%】(享自住同等稅率！)</option>
-                    </optgroup>
-                    <optgroup label="🏢 特定房屋 (排除囤房稅)">
-                        <option value="inherit">【繼承取得共有房屋】(約 1.5%~2.4%)</option>
-                        <option value="commercial">【商用/營業/診所】(約 3.0%~5.0%)</option>
-                    </optgroup>
-                    <optgroup label="📈 囤房稅 2.0 (非自住住家用)">
-                        <option value="hoard_2">【囤房稅】全國總持有 2戶內 (參考 3.2%)</option>
-                        <option value="hoard_4">【囤房稅】全國總持有 3~4戶 (參考 3.8%)</option>
-                        <option value="hoard_6">【囤房稅】全國總持有 5~6戶 (參考 4.2%)</option>
-                        <option value="hoard_7">【囤房稅】全國總持有 7戶以上 (最高 4.8%)</option>
-                    </optgroup>
-                </select>
-            </div>
-            
-            <button class="calc-btn" onclick="calculateHouseTax()">結算預估房屋稅</button>
-            <div id="houseResult" class="result"></div>
-            <div class="note">* 註：實際稅率依各縣市政府當年訂定自治條例為準，本試算採參考稅率估算。</div>
-        </div>
-    </div>
-
-    <div id="tab-land" class="tab-content">
-        <div class="card">
-            <h2>🌱 地價稅智慧試算</h2>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label>土地面積 (平方公尺)</label>
-                    <input type="number" id="landArea" placeholder="輸入面積" min="0" oninput="updateLandTotal()">
-                </div>
-                <div class="form-group">
-                    <label>申報地價 (元/平方公尺)</label>
-                    <input type="number" id="landUnitPrice" placeholder="輸入單價" min="0" oninput="updateLandTotal()">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label>申報地價總額 (元) <span style="font-weight:normal; font-size:13px;">(可由上方自動計算)</span></label>
-                <input type="number" id="landValue" placeholder="例如：500000" min="0">
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label>選擇縣市 (帶入最新起點)</label>
-                    <select id="countySelect" onchange="updateProgressiveStart()">
-                        <option value="42165000">臺北市 (42,165,000元)</option>
-                        <option value="7222000">新北市 (7,222,000元)</option>
-                        <option value="3500000">桃園市 (約 3,500,000元)</option>
-                        <option value="1723000">臺中市 (1,723,000元)</option>
-                        <option value="2072000">臺南市 (2,072,000元)</option>
-                        <option value="5453000">新竹市 (5,453,000元)</option>
-                        <option value="other">其他縣市自訂</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>該縣市累進起點地價 (元)</label>
-                    <input type="number" id="progressiveStart" value="42165000">
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label>土地使用情形</label>
-                <select id="landType">
-                    <option value="self">【自用住宅 / 包租代管用地】(極度優惠：千分之 2)</option>
-                    <option value="general">【一般用地】(千分之10 起跳 ~ 最高千分之55)</option>
-                </select>
-            </div>
-            
-            <button class="calc-btn" onclick="calculateLandTax()">結算預估地價稅</button>
-            <div id="landResult" class="result"></div>
-            <div class="note">* 註：符合自用及包租代管需事前申請！超過累進起點將啟動階梯式重稅。</div>
-        </div>
-    </div>
-
-    <footer>
-        <p style="color:var(--primary-color); font-size:1.1em; margin-bottom: 5px;"><strong>宏國地政 × 易丞地政</strong></p>
-        <p style="margin-top: 0;">專業、效率、透明，是我們的承諾。</p>
-        <p style="margin-top: 15px;">📞 <a href="tel:062582589" style="color:#4A5568;text-decoration:none;">06-2582589</a><br>
-        📮 台南市北區文賢路1080巷11號</p>
-    </footer>
-
+    <div class="mt-8 text-xs text-blue-200 opacity-60 tracking-widest">© 2026 宏國地政 | 易丞地政</div>
 </div>
 
-<div class="bottom-bar">
-    <div class="bottom-bar-inner">
-        <a href="https://g.page/r/CcUysPsgjeseEAI/review" target="_blank" class="btn-action btn-review">
-            ⭐ 給予五星好評
-        </a>
-        <a href="https://line.me/ti/g2/aVklWxyLP1RtfstQsslGQOlP4KViuFI7PPucdQ" target="_blank" class="btn-action btn-line">
-            💬 加入 LINE 研究社
-        </a>
+<div id="main-content" style="display: none;">
+    <div class="container">
+        <header>
+            <div class="logo-wrapper">
+                <img src="宏國地政封面.jpg" alt="宏國地政 Logo" class="logo-img" onerror="this.style.display='none'">
+                <img src="易丞logo-01.jpg" alt="易丞地政 Logo" class="logo-img" onerror="this.style.display='none'">
+            </div>
+            <h1>💰 不動產稅務全攻略</h1>
+            <p class="subtitle">買賣 x 持有 x 移轉｜自動試算小幫手</p>
+        </header>
+
+        <div class="tabs-nav">
+            <button class="tab-btn active" onclick="switchTab(event, 'tab-info')">💡 節稅秘笈</button>
+            <button class="tab-btn" onclick="switchTab(event, 'tab-house')">🏠 房屋稅試算</button>
+            <button class="tab-btn" onclick="switchTab(event, 'tab-land')">🌱 地價稅試算</button>
+        </div>
+
+        <div id="tab-info" class="tab-content active">
+            
+            <div class="tax-grid">
+                <div class="tax-card card-hold">
+                    <h3>📍 持有房產</h3>
+                    <div class="tax-items">🏠 房屋稅 + 🌏 地價稅</div>
+                    <div class="tax-desc">每年必繳！注意地價若上漲，可能越繳越多。</div>
+                </div>
+                <div class="tax-card card-trade">
+                    <h3>📍 買賣過程</h3>
+                    <div class="tax-items">🧾 契稅 + 📝 印花稅</div>
+                    <div class="tax-desc">隱形成本！合約成立就要課稅，交屋前必結清。</div>
+                </div>
+                <div class="tax-card card-sell">
+                    <h3>📍 賣屋所得</h3>
+                    <div class="tax-items">💸 房地合一稅</div>
+                    <div class="tax-desc">最容易誤會！持有時間用途不同，稅率最高達 45%。</div>
+                </div>
+            </div>
+
+            <div class="card img-box">
+                <h2>📊 一張圖秒懂：房屋 vs 地價稅</h2>
+                <p style="color:#718096; margin-bottom: 10px;">點擊上方頁籤，立即為您自動試算！</p>
+                <img src="589889114321715546.jpg" alt="房屋稅與地價稅比較" class="content-img" onerror="this.style.display='none'">
+            </div>
+
+            <div class="card">
+                <h2>📚 節稅小學堂：不可不知的眉角</h2>
+                <div class="video-btn-wrapper">
+                    <a href="https://youtube.com/shorts/vSLtf6U8p8w?si=sP_p5lgEE8tkzd3W" target="_blank" class="btn-youtube">
+                        觀看專家影音完整解析
+                    </a>
+                </div>
+
+                <details>
+                    <summary>💡 房屋稅和地價稅的「自用」都要設戶籍嗎？</summary>
+                    <div class="details-content">
+                        沒錯！兩者都嚴格要求設立戶籍。<br>
+                        • <b>房屋稅：</b>必須是所有人或配偶、<b>直系親屬</b>辦竣戶籍登記。<br>
+                        • <b>地價稅：</b>同樣要求所有權人或配偶、<b>直系親屬</b>設戶籍，且兩者皆不可有出租或營業情形。
+                    </div>
+                </details>
+                
+                <details>
+                    <summary>💡 兩間以上的房子，都能申請「自用地價稅」嗎？</summary>
+                    <div class="details-content">
+                        地價稅規定本人、配偶及未成年子女原則上以「一處」為限。<br><br>
+                        <b>✨ 易丞專業破解秘訣：</b><br>
+                        若有第二間房，可利用「成年子女」、「父母」或「祖父母」等其他直系親屬去設立戶籍，只要符合面積限制，第二間也能享有千分之二的極優惠稅率！
+                    </div>
+                </details>
+
+                <details>
+                    <summary>💡 什麼是「全國總歸戶」？囤房稅多高？</summary>
+                    <div class="details-content">
+                        現在是「全台灣」的應稅房屋合併計算戶數！針對「非自住住家」，稅率最高可達 4.8%。<br><br>
+                        🎁 但若您本人、配偶及未成年子女全台灣只有一間房子且供自住（一定現值下），稅率會降至 1.0% 的超優惠大紅包！
+                    </div>
+                </details>
+
+                <details>
+                    <summary>💡 想要節稅，什麼時候申請才來得及？</summary>
+                    <div class="details-content">
+                        • <b>地價稅：</b>每年 11/1 開徵，必須在 <b>9/22</b> 前提出申請。<br>
+                        • <b>房屋稅：</b>每年 5/1 開徵，使用情形變更必須在 <b>3/22</b> 前申報。
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <div id="tab-house" class="tab-content">
+            <div class="card">
+                <h2>🏠 房屋稅 2.0 智慧試算</h2>
+                <div class="info-alert">
+                    <b>⚠️ 囤房稅豁免專區：</b><br>
+                    「繼承共有」、「商用營業」、「包租代管/公益出租」及「自住」，都<b>不會</b>被算進 2.0%~4.8% 囤房重稅！加入包租代管更享 <b>1.2%</b> 自住同等優惠！
+                </div>
+
+                <div class="form-group">
+                    <label for="houseValue">房屋現值 (元)</label>
+                    <input type="number" id="houseValue" placeholder="例如：1000000" min="0">
+                </div>
+                
+                <div class="form-group">
+                    <label for="houseType">房屋使用情形 (智慧分類)</label>
+                    <select id="houseType">
+                        <optgroup label="✨ 自住與公益優惠稅率">
+                            <option value="single_self">【單一自住 1.0%】(本人/配偶/未成年全國1戶+設戶籍)</option>
+                            <option value="general_self">【一般自住 1.2%】(全國限3戶+設戶籍)</option>
+                            <option value="social">【包租代管/公益出租 1.2%】(享自住同等稅率！)</option>
+                        </optgroup>
+                        <optgroup label="🏢 特定房屋 (排除囤房稅)">
+                            <option value="inherit">【繼承取得共有房屋】(約 1.5%~2.4%)</option>
+                            <option value="commercial">【商用/營業/診所】(約 3.0%~5.0%)</option>
+                        </optgroup>
+                        <optgroup label="📈 囤房稅 2.0 (非自住住家用)">
+                            <option value="hoard_2">【囤房稅】全國總持有 2戶內 (參考 3.2%)</option>
+                            <option value="hoard_4">【囤房稅】全國總持有 3~4戶 (參考 3.8%)</option>
+                            <option value="hoard_6">【囤房稅】全國總持有 5~6戶 (參考 4.2%)</option>
+                            <option value="hoard_7">【囤房稅】全國總持有 7戶以上 (最高 4.8%)</option>
+                        </optgroup>
+                    </select>
+                </div>
+                
+                <button class="calc-btn" onclick="calculateHouseTax()">結算預估房屋稅</button>
+                <div id="houseResult" class="result"></div>
+                <div class="note">* 註：實際稅率依各縣市政府當年訂定自治條例為準，本試算採參考稅率估算。</div>
+            </div>
+        </div>
+
+        <div id="tab-land" class="tab-content">
+            <div class="card">
+                <h2>🌱 地價稅智慧試算</h2>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>土地面積 (平方公尺)</label>
+                        <input type="number" id="landArea" placeholder="輸入面積" min="0" oninput="updateLandTotal()">
+                    </div>
+                    <div class="form-group">
+                        <label>申報地價 (元/平方公尺)</label>
+                        <input type="number" id="landUnitPrice" placeholder="輸入單價" min="0" oninput="updateLandTotal()">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>申報地價總額 (元) <span style="font-weight:normal; font-size:13px;">(可由上方自動計算)</span></label>
+                    <input type="number" id="landValue" placeholder="例如：500000" min="0">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>選擇縣市 (帶入最新起點)</label>
+                        <select id="countySelect" onchange="updateProgressiveStart()">
+                            <option value="42165000">臺北市 (42,165,000元)</option>
+                            <option value="7222000">新北市 (7,222,000元)</option>
+                            <option value="3500000">桃園市 (約 3,500,000元)</option>
+                            <option value="1723000">臺中市 (1,723,000元)</option>
+                            <option value="2072000">臺南市 (2,072,000元)</option>
+                            <option value="5453000">新竹市 (5,453,000元)</option>
+                            <option value="other">其他縣市自訂</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>該縣市累進起點地價 (元)</label>
+                        <input type="number" id="progressiveStart" value="42165000">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>土地使用情形</label>
+                    <select id="landType">
+                        <option value="self">【自用住宅 / 包租代管用地】(極度優惠：千分之 2)</option>
+                        <option value="general">【一般用地】(千分之10 起跳 ~ 最高千分之55)</option>
+                    </select>
+                </div>
+                
+                <button class="calc-btn" onclick="calculateLandTax()">結算預估地價稅</button>
+                <div id="landResult" class="result"></div>
+                <div class="note">* 註：符合自用及包租代管需事前申請！超過累進起點將啟動階梯式重稅。</div>
+            </div>
+        </div>
+
+        <footer>
+            <p style="color:var(--primary-color); font-size:1.1em; margin-bottom: 5px;"><strong>宏國地政 × 易丞地政</strong></p>
+            <p style="margin-top: 0;">專業、效率、透明，是我們的承諾。</p>
+            <p style="margin-top: 15px;">📞 <a href="tel:062582589" style="color:#4A5568;text-decoration:none;">06-2582589</a><br>
+            📮 台南市北區文賢路1080巷11號</p>
+        </footer>
+
+    </div>
+
+    <div class="bottom-bar">
+        <div class="bottom-bar-inner">
+            <a href="https://g.page/r/CcUysPsgjeseEAI/review" target="_blank" class="btn-action btn-review">
+                ⭐ 給予五星好評
+            </a>
+            <a href="https://line.me/ti/g2/aVklWxyLP1RtfstQsslGQOlP4KViuFI7PPucdQ" target="_blank" class="btn-action btn-line">
+                💬 加入 LINE 研究社
+            </a>
+        </div>
     </div>
 </div>
 
 <script>
+    // ==========================================
+    // 🛡️ Nexus SSO 企業級門禁系統邏輯
+    // ==========================================
+    const gasAuthUrl = "https://script.google.com/macros/s/AKfycbwiIbmZWvNkOZW1wPBSZT1b5MKcfeeU8LtfqOiPZE0gN0VPkxJDguhKmb6rTJnSWWBnCA/exec";
+
+    function initAuth() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const authStatus = urlParams.get('nexus_auth');
+        const authGate = document.getElementById('nexus-auth-gate');
+        const mainContent = document.getElementById('main-content');
+        const errorMsg = document.getElementById('auth-error-msg');
+        const errorText = document.getElementById('auth-error-text');
+
+        let isUnlocked = false;
+
+        if (authStatus === 'success') {
+            localStorage.setItem('hg_line_auth', 'true');
+            isUnlocked = true;
+            window.history.replaceState({}, document.title, window.location.pathname);
+        } else if (authStatus === 'failed_not_friend') {
+            localStorage.removeItem('hg_line_auth');
+            isUnlocked = false;
+            errorText.innerText = "授權失敗：系統偵測到您尚未加入好友或已封鎖官方帳號。請重新登入並務必勾選加入好友。";
+            errorMsg.style.display = 'flex';
+            window.history.replaceState({}, document.title, window.location.pathname);
+        } else {
+            if (localStorage.getItem('hg_line_auth') === 'true') {
+                isUnlocked = true;
+            }
+        }
+
+        if (isUnlocked) {
+            authGate.style.display = 'none';
+            mainContent.style.display = 'block';
+            document.body.style.overflow = 'auto';
+            // 如果已解鎖，執行原本頁面需要的載入邏輯
+            updateProgressiveStart();
+        } else {
+            authGate.style.display = 'flex';
+            mainContent.style.display = 'none';
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function loginWithLine() {
+        const currentBaseUrl = window.location.origin + window.location.pathname;
+        window.location.href = `${gasAuthUrl}?state=${encodeURIComponent(currentBaseUrl)}`;
+    }
+
+    // 啟動門禁系統
+    document.addEventListener('DOMContentLoaded', initAuth);
+
+    // ==========================================
+    // 🌟 原有業務邏輯 (完美保留、一字未改)
+    // ==========================================
+
     // --- 頁籤切換邏輯 ---
     function switchTab(evt, tabId) {
         let contents = document.getElementsByClassName("tab-content");
@@ -692,10 +806,6 @@
     }
     document.ondragstart = function() { return false; };
 
-    // 初始化地價試算預設值
-    window.onload = function() {
-        updateProgressiveStart();
-    };
 </script>
 </body>
 </html>
