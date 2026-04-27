@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>不動產稅務全攻略 - 宏國地政｜易丞地政 (SSO Edition)</title>
+    <title>不動產稅務全攻略 - 宏國地政｜易丞地政 (家族辦公室版)</title>
     <meta name="description" content="買房、持屋、賣房到底要繳哪些稅？房屋稅、地價稅、房地合一稅一次搞懂！宏國地政｜易丞地政專業解析。">
     
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -32,7 +32,8 @@
             --line-green: #06c755;
             --line-green-hover: #05b34c;
             --tab-bg: #EDF2F7;
-            --b2b-color: #2C5282;
+            --family-office: #1a202c; /* 尊榮黑 */
+            --family-gold: #D69E2E;   /* 尊榮金 */
             --welfare-color: #276749;
         }
 
@@ -78,8 +79,10 @@
             transition: all 0.3s ease; text-align: center;
         }
         .tab-btn.active { background: var(--primary-color); color: white; box-shadow: 0 4px 10px rgba(26, 54, 93, 0.3); }
-        .tab-btn.b2b-btn { background: linear-gradient(135deg, #2B6CB0 0%, #2C5282 100%); color: white; border: 1px solid #2A4365;}
-        .tab-btn.b2b-btn.active { background: linear-gradient(135deg, #1A365D 0%, #000000 100%); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); }
+        
+        /* 頂峰家族辦公室專屬按鈕樣式 */
+        .tab-btn.b2b-btn { background: linear-gradient(135deg, #2D3748 0%, #1A202C 100%); color: var(--family-gold); border: 1px solid #4A5568;}
+        .tab-btn.b2b-btn.active { background: linear-gradient(135deg, #000000 0%, #1A202C 100%); box-shadow: 0 4px 15px rgba(214, 158, 46, 0.4); border-color: var(--family-gold); }
 
         .tab-content { display: none; animation: fadeIn 0.4s ease-out forwards; }
         .tab-content.active { display: block; }
@@ -92,8 +95,13 @@
         }
         .card h2 { color: var(--primary-color); border-left: 5px solid var(--accent-color); padding-left: 12px; margin-top: 0; font-size: 1.3em; }
         
-        .b2b-card { border: 2px solid #2B6CB0; background: #F7FAFC; box-shadow: 0 8px 25px rgba(43, 108, 176, 0.15); }
-        .b2b-card h2 { color: #1A365D; border-left: 5px solid #2B6CB0; }
+        /* 頂峰家族辦公室卡片樣式 */
+        .b2b-card { border: 2px solid var(--family-gold); background: #1A202C; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); color: #E2E8F0; }
+        .b2b-card h2 { color: var(--family-gold); border-left: 5px solid #CBD5E0; }
+        .b2b-card label { color: #A0AEC0; }
+        .b2b-card input, .b2b-card select { background-color: #2D3748; color: white; border-color: #4A5568; }
+        .b2b-card input:focus, .b2b-card select:focus { border-color: var(--family-gold); background-color: #1A202C; }
+        .b2b-card .note { color: #718096; }
         
         .welfare-card { border: 2px solid #38A169; background: #F0FFF4; box-shadow: 0 8px 25px rgba(56, 161, 105, 0.15); }
         .welfare-card h2 { color: var(--welfare-color); border-left: 5px solid #38A169; }
@@ -128,7 +136,7 @@
         /* --- 表單與按鈕 --- */
         .info-alert { background-color: #FEFCBF; padding: 15px; border-radius: 8px; margin: 0 0 20px 0; font-size: 0.95em; border: 1px dashed #D69E2E; color: #744210; }
         .law-alert { background-color: #E6FFFA; padding: 15px; border-radius: 8px; margin: 0 0 20px 0; font-size: 0.9em; border: 1px solid #38B2AC; color: #234E52; transition: all 0.3s ease; }
-        .b2b-alert { background-color: #EBF4FF; padding: 15px; border-radius: 8px; margin: 0 0 20px 0; font-size: 0.95em; border: 1px solid #2B6CB0; color: #1A365D; font-weight: bold; }
+        .b2b-alert { background-color: #2D3748; padding: 15px; border-radius: 8px; margin: 0 0 20px 0; font-size: 0.95em; border: 1px solid var(--family-gold); color: #E2E8F0; font-weight: bold; }
         .welfare-alert { background-color: #FFFFFF; padding: 15px; border-radius: 8px; margin: 0 0 20px 0; font-size: 0.95em; border: 1px solid #9AE6B4; color: #276749; font-weight: bold; }
         
         .form-group { margin-bottom: 15px; transition: all 0.3s ease; }
@@ -138,11 +146,12 @@
         input[type="number"]:focus, select:focus { outline: none; border-color: var(--accent-color); background-color: #FFF; }
         
         .calc-btn { background: linear-gradient(135deg, var(--accent-color) 0%, #B7791F 100%); color: white; border: none; padding: 15px; font-size: 1.1em; border-radius: 8px; cursor: pointer; width: 100%; font-weight: bold; margin-top: 10px; box-shadow: 0 4px 15px rgba(214, 158, 46, 0.3); }
-        .calc-btn-b2b { background: linear-gradient(135deg, #2B6CB0 0%, #1A365D 100%); box-shadow: 0 4px 15px rgba(43, 108, 176, 0.3); }
+        .calc-btn-b2b { background: linear-gradient(135deg, #D69E2E 0%, #B7791F 100%); color: #1A202C; box-shadow: 0 4px 15px rgba(214, 158, 46, 0.2); }
 
         .result { margin-top: 20px; padding: 15px; background-color: #EBF8FF; border: 2px solid #63B3ED; border-radius: 10px; font-size: 1.1em; font-weight: bold; text-align: center; color: #2B6CB0; display: none; }
         .result-left { text-align: left; line-height: 1.8; }
         .result-highlight { color: #E53E3E; font-size: 1.2em; }
+        .result-b2b { background-color: #2D3748; border-color: var(--family-gold); color: #E2E8F0; }
         .note { font-size: 0.85em; color: #718096; margin-top: 10px; }
 
         /* --- 底部元素 --- */
@@ -208,7 +217,7 @@
                 <button class="tab-btn" onclick="switchTab(event, 'tab-house-tainan')">🏰 台南專屬房屋稅</button>
                 <button class="tab-btn" onclick="switchTab(event, 'tab-land')">🌱 地價稅試算</button>
                 <button class="tab-btn" onclick="switchTab(event, 'tab-rent')">🏢 房東租賃稅</button>
-                <button class="tab-btn b2b-btn" onclick="switchTab(event, 'tab-b2b')">👑 大B端資產賦能</button>
+                <button class="tab-btn b2b-btn" onclick="switchTab(event, 'tab-b2b')">👑 頂峰家族辦公室</button>
             </div>
         </div>
 
@@ -424,7 +433,18 @@
                         </select>
                 </div>
 
-                <button class="calc-btn" onclick="calculateRentTax()">精算租賃稅費</button>
+                <div class="form-group" id="rentTaxRateGroup">
+                    <label for="rentTaxRate"><i class="fas fa-calculator"></i> 房東綜合所得稅級距估計</label>
+                    <select id="rentTaxRate">
+                        <option value="0.05">5% (小資族)</option>
+                        <option value="0.12">12% (中產階級)</option>
+                        <option value="0.2">20% (中高資產)</option>
+                        <option value="0.3">30% (高淨值)</option>
+                        <option value="0.4">40% (頂級大戶)</option>
+                    </select>
+                </div>
+
+                <button class="calc-btn" onclick="calculateRentTax()">精算租賃稅費 (含國稅局綜所稅對比)</button>
                 <div id="rentResult" class="result result-left"></div>
             </div>
 
@@ -438,7 +458,7 @@
                     <div class="tax-card" style="border-left-color: #4299E1; background: #EBF8FF;">
                         <h3 style="color: #2B6CB0;">💰 綜合所得稅</h3>
                         <div class="tax-items">每月最高 1.5 萬免稅額</div>
-                        <div class="tax-desc">每屋(依門牌)每月租金收入1.5萬內免納所得稅！超過部分還可扣除法定必要費用。</div>
+                        <div class="tax-desc">每屋(依門牌)每月租金收入1.5萬內免納所得稅！超過部分還可扣除 43% 法定必要費用。</div>
                     </div>
                     <div class="tax-card" style="border-left-color: #DD6B20; background: #FFFAF0;">
                         <h3 style="color: #C05621;">🏠 房屋稅</h3>
@@ -457,29 +477,29 @@
                 <details style="border-left-color:#38A169; margin-top:15px;">
                     <summary style="color:#276749;">Q1: 什麼是「公益出租人」？</summary>
                     <div class="details-content">
-                        只要房屋所有權人，將住宅出租給符合「租金補貼」申請資格的房客（如一般補貼戶、中低收入戶等），經直轄市、縣(市)主管機關認定後，即為公益出租人。<b>特別注意：法人也可以是公益出租人！</b>
+                        只要房屋所有權人，將住宅出租給符合「租金補貼」申請資格的房客（如一般補貼戶、中低收入戶等），經主管機關認定後，即為公益出租人。<b>特別注意：法人也可以是公益出租人！</b>
                     </div>
                 </details>
 
                 <details style="border-left-color:#38A169;">
                     <summary style="color:#276749;">Q2: 我需要自己主動去申請這些優惠嗎？</summary>
                     <div class="details-content">
-                        <b>綜合所得稅與房屋稅：</b> 通常免主動申請！房客申請租金補貼核准後，政府會將清冊直接交給國稅局與地方稅務局，自動為您套用優惠。<br>
-                        <b>地價稅：</b> 部分縣市（依地方政府自治條例）可能需要房東主動於地價稅開徵 40 天前（9/22前）提出申請。建議交由易丞地政為您全面把關！
+                        <b>綜合所得稅與房屋稅：</b> 通常免主動申請！房客申請補貼核准後，政府會將清冊交給國稅局與稅務局自動套用優惠。<br>
+                        <b>地價稅：</b> 部分縣市需主動於開徵 40 天前提出申請。建議交由易丞地政為您全面把關！
                     </div>
                 </details>
 
                 <details style="border-left-color:#38A169;">
                     <summary style="color:#276749;">Q3: 如果我有好幾間房子出租，戶數有限制嗎？</summary>
                     <div class="details-content">
-                        <b>完全沒有戶數限制！</b> 只要符合公益出租人條件，名下就算有 10 戶房屋分別出租給符合資格的房客，每一戶（以獨立門牌為準）都能享有每月 1.5 萬免稅額，且每一戶的房屋稅、地價稅通通享有自住優惠。
+                        <b>完全沒有戶數限制！</b> 只要符合條件，名下 10 戶房屋分別出租，每一戶（以門牌為準）都能享有每月 1.5 萬免稅額與房屋地價稅自住優惠。
                     </div>
                 </details>
                 
                 <details style="border-left-color:#38A169;">
                     <summary style="color:#276749;">Q4: 房子是老公的名字，可以用老婆的名字簽約出租嗎？</summary>
                     <div class="details-content">
-                        <b>不行！</b> 租賃契約上的「出租人」必須是「房屋所有權人」，才能享有上述所有稅賦優惠。如果是共有房屋，強烈建議將所有共有人都列名為出租人，避免權益受損。
+                        <b>不行！</b> 租賃契約上的「出租人」必須是「房屋所有權人」，才能享有上述所有稅賦優惠。如果是共有房屋，需將所有共有人都列名為出租人。
                     </div>
                 </details>
                 
@@ -491,34 +511,33 @@
 
         <div id="tab-b2b" class="tab-content">
             <div class="card b2b-card">
-                <h2>👑 企業級租約架構拆分精算引擎</h2>
-                <div class="b2b-alert">
-                    <i class="fas fa-chess-king"></i> 易丞獨家解法：將「單一高額租金」轉化為「租金 + 管理服務費」。<br>
-                    由易丞地政擔任包租代管方開立發票，大幅降低房東的「個人租賃所得稅」與房客的「二代健保代扣壓力」，創造三贏！
+                <h2>👑 頂峰家族辦公室：企業級資產護城河</h2>
+                <div class="b2b-alert" style="background-color: #2D3748; color: #E2E8F0;">
+                    <i class="fas fa-chess-king" style="color: var(--family-gold);"></i> <b>高端資產架構重組：</b>將傳統「單一高額租金」轉化為「租金 + 易丞物業管理服務費」。<br>
+                    由易丞地政擔任包租代管方開立發票，合法降低房東之「個人租賃所得稅」與房客之「二代健保代扣壓力」，創造頂峰財富效益！
                 </div>
 
-                <div class="law-alert" style="margin-top:15px;">
+                <div class="law-alert" style="background-color: #1A202C; border-color: #4A5568; color: #A0AEC0; margin-top:15px;">
                     <b>⚖️ 法源依據：</b>依《所得稅法》第14條及財政部函釋，租賃財產之管理費、清潔費若於契約中明確劃分並由代管業者開立憑證，則不列入房東之租賃所得計算。
                 </div>
 
                 <div class="form-group">
-                    <label for="b2bTotalBudget">企業房客預計支付總預算 (元/月)</label>
-                    <input type="number" id="b2bTotalBudget" placeholder="例如：100000" min="0">
+                    <label for="b2bTotalBudget">連鎖企業預計支付總預算 (元/月)</label>
+                    <input type="number" id="b2bTotalBudget" placeholder="例如：200000" min="0">
                 </div>
                 
                 <div class="form-group">
-                    <label for="b2bTaxRate">房東個人綜合所得稅級距估計</label>
+                    <label for="b2bTaxRate">房東綜合所得稅級距</label>
                     <select id="b2bTaxRate">
-                        <option value="0.12">12% (一般戶)</option>
                         <option value="0.2">20% (中高資產戶)</option>
                         <option value="0.3">30% (高淨值大戶)</option>
-                        <option value="0.4">40% (頂級大戶)</option>
+                        <option value="0.4" selected>40% (頂級家族大戶)</option>
                     </select>
                 </div>
                 
-                <button class="calc-btn calc-btn-b2b" onclick="calculateB2BOptimization()">執行架構拆分與節稅試算</button>
-                <div id="b2bResult" class="result result-left"></div>
-                <div class="note">* 註：本估算包含 43% 租賃成本法定扣除額。實際規劃需視現場物件及易丞簽約條件為準。</div>
+                <button class="calc-btn calc-btn-b2b" onclick="calculateB2BOptimization()">執行資產重組與節稅精算</button>
+                <div id="b2bResult" class="result result-left result-b2b"></div>
+                <div class="note">* 註：本估算包含 43% 法定成本扣除額。實際專案架構請聯繫宏國/易丞首席顧問團隊。</div>
             </div>
         </div>
 
@@ -703,7 +722,7 @@
         resultDiv.innerHTML = msg;
     }
 
-    // --- 3. 房東租賃稅全矩陣邏輯 ---
+    // --- 3. 房東租賃稅全矩陣邏輯 (新增國稅局所得稅運算) ---
     function updateRentUI() {
         const landlord = document.getElementById('rentLandlord').value;
         const tenant = document.getElementById('rentTenant').value;
@@ -711,10 +730,18 @@
         const conditionSelect = document.getElementById('rentCondition');
         const conditionGroup = document.getElementById('rentConditionGroup');
         const conditionLabel = document.getElementById('rentConditionLabel');
+        const taxRateGroup = document.getElementById('rentTaxRateGroup');
         
         conditionSelect.innerHTML = ''; 
         
-        // 情況 1: 個人 租給 法人 (最複雜)
+        // 若房東是自然人，顯示綜所稅級距選項
+        if (landlord === 'individual') {
+            taxRateGroup.style.display = 'block';
+        } else {
+            taxRateGroup.style.display = 'none';
+        }
+        
+        // 情況 1: 個人 租給 法人
         if (landlord === 'individual' && tenant === 'corporate') {
             alertBox.innerHTML = `<b>⚖️ 稅法警報：</b>房客(公司)為扣繳義務人。當單次租金達 <b>2萬元(含)</b> 時，房客需代扣 <b>10% 租賃所得稅</b> 與 <b>2.11% 二代健保</b>。若約定實拿，房客需逆算吸收稅額。`;
             alertBox.style.borderColor = '#E53E3E'; alertBox.style.color = '#C53030'; alertBox.style.backgroundColor = '#FFF5F5';
@@ -725,7 +752,7 @@
             `;
             conditionGroup.style.opacity = '1'; conditionGroup.style.pointerEvents = 'auto';
         } 
-        // 情況 2: 法人 租給 任何人 (公司開發票)
+        // 情況 2: 法人 租給 任何人
         else if (landlord === 'corporate') {
             alertBox.innerHTML = `<b>⚖️ 法規指示：</b>房東為法人，需自行申報營所稅。<b>免扣 10% 所得稅與二代健保</b>，但通常需開立發票並外加 <b>5% 營業稅</b>。`;
             alertBox.style.borderColor = '#3182CE'; alertBox.style.color = '#2B6CB0'; alertBox.style.backgroundColor = '#EBF8FF';
@@ -736,11 +763,11 @@
             `;
             conditionGroup.style.opacity = '1'; conditionGroup.style.pointerEvents = 'auto';
         }
-        // 情況 3: 個人 租給 個人 (最單純)
+        // 情況 3: 個人 租給 個人
         else if (landlord === 'individual' && tenant === 'individual') {
-            alertBox.innerHTML = `<b>⚖️ 法規指示：</b>雙方皆為自然人，<b>房客無預先扣繳義務</b>。房東實收約定租金，隔年5月自行申報綜所稅即可。`;
+            alertBox.innerHTML = `<b>⚖️ 法規指示：</b>雙方皆為自然人，<b>房客無預先扣繳義務</b>。房東實收約定租金，隔年5月自行申報「綜合所得稅」即可。`;
             alertBox.style.borderColor = '#38A169'; alertBox.style.color = '#276749'; alertBox.style.backgroundColor = '#F0FFF4';
-            conditionSelect.innerHTML = `<option value="none">免扣繳，房東全額實拿</option>`;
+            conditionSelect.innerHTML = `<option value="none">免預扣繳，房東全額實收</option>`;
             conditionGroup.style.opacity = '0.3'; conditionGroup.style.pointerEvents = 'none';
         }
     }
@@ -750,6 +777,7 @@
         const landlord = document.getElementById('rentLandlord').value;
         const tenant = document.getElementById('rentTenant').value;
         const condition = document.getElementById('rentCondition').value;
+        const taxRate = parseFloat(document.getElementById('rentTaxRate').value) || 0; // 所得稅率
         const resultDiv = document.getElementById('rentResult');
 
         if (isNaN(rent) || rent <= 0) { alert('請輸入有效的約定月租金！'); return; }
@@ -757,7 +785,7 @@
         resultDiv.style.display = 'block';
         let htmlStr = '';
 
-        // 矩陣計算 A: 個人 租給 法人
+        // --- 矩陣計算 A: 個人 租給 法人 ---
         if (landlord === 'individual' && tenant === 'corporate') {
             let baseRent = 0, incomeTax = 0, nhiTax = 0;
             if (condition === 'net') {
@@ -775,20 +803,31 @@
             }
             let actualToLandlord = condition === 'net' ? rent : Math.round(baseRent - incomeTax - nhiTax);
             let totalCostToTenant = condition === 'net' ? Math.round(baseRent) : rent;
+            
+            // 計算房東年底真實要繳的所得稅 (以 43% 扣除率計算)
+            let annualBase = baseRent * 12;
+            let realAnnualTax = Math.round(annualBase * (1 - 0.43) * taxRate);
+            let prePaidTax = incomeTax * 12; // 已預先扣繳的稅
+            let taxDiffMsg = realAnnualTax > prePaidTax ? `年底需補繳 ${formatCurrency(realAnnualTax - prePaidTax)} 元` : `年底可退稅 ${formatCurrency(prePaidTax - realAnnualTax)} 元`;
 
             htmlStr = `
                 <div>💰 申報給付總額： <b>${formatCurrency(baseRent)}</b> 元</div>
                 <hr style="margin: 10px 0; border: 0.5px dashed #63B3ED;">
-                <div>🏢 房客代扣所得稅 (10%)： <b>${formatCurrency(incomeTax)}</b> 元</div>
-                <div>🏥 房客代扣二代健保 (2.11%)： <b>${formatCurrency(nhiTax)}</b> 元</div>
+                <div>🏢 房客每月代扣所得稅(10%)： <b>${formatCurrency(incomeTax)}</b> 元</div>
+                <div>🏥 房客每月代扣二代健保(2.11%)： <b>${formatCurrency(nhiTax)}</b> 元</div>
                 <hr style="margin: 10px 0; border: 0.5px dashed #63B3ED;">
                 <div style="color: #2D3748;">👉 房東每月實收： <span class="result-highlight">${formatCurrency(actualToLandlord)}</span> 元</div>
                 <div style="color: #2D3748;">👉 公司每月總成本： <b>${formatCurrency(totalCostToTenant)}</b> 元</div>
+                <div style="margin-top:15px; padding:10px; background:#F7FAFC; border-radius:8px; font-size:0.9em;">
+                    <div style="font-weight:bold; color:#2B6CB0; margin-bottom:5px;">📊 國稅局年度綜所稅精算 (級距 ${taxRate*100}%)</div>
+                    全年應納租賃所得稅：${formatCurrency(realAnnualTax)} 元<br>
+                    (房客已代繳 ${formatCurrency(prePaidTax)} 元，${taxDiffMsg})
+                </div>
             `;
-            if(baseRent < 20000) htmlStr += `<div style="margin-top:10px; font-size:0.85em; color:#38A169;">✨ 總額未達 20,000 元，免扣繳所得稅與二代健保！</div>`;
-            else if(condition === 'net') htmlStr += `<div style="margin-top:10px; font-size:0.85em; color:#E53E3E;">⚠️ 因約定「實拿」，公司需逆算吸收稅額，成本大幅墊高。建議切換至「大B端賦能」規劃節稅。</div>`;
+            if(condition === 'net') htmlStr += `<div style="margin-top:10px; font-size:0.85em; color:#E53E3E; font-weight:bold;">⚠️ 公司需逆算吸收稅費，成本暴增！請參考上方「👑 頂峰家族辦公室」架構拆分來避稅。</div>`;
         } 
-        // 矩陣計算 B: 法人 租給 任何人
+        
+        // --- 矩陣計算 B: 法人 租給 任何人 ---
         else if (landlord === 'corporate') {
             let baseRent, vat, total;
             if (condition === 'gross') {
@@ -806,24 +845,50 @@
                 <hr style="margin: 10px 0; border: 0.5px dashed #63B3ED;">
                 <div style="color: #2D3748;">👉 房東開立發票總金額： <span class="result-highlight">${formatCurrency(total)}</span> 元</div>
                 <div style="color: #2D3748;">👉 房客每月應付總額： <b>${formatCurrency(total)}</b> 元</div>
-                <div style="margin-top:10px; font-size:0.85em; color:#2B6CB0;">💡 提示：法人房東免扣繳所得稅及二代健保。</div>
             `;
         }
-        // 矩陣計算 C: 個人 租給 個人
+        
+        // --- 矩陣計算 C: 個人 租給 個人 (國稅局 vs 公益出租人 強烈對比) ---
         else if (landlord === 'individual' && tenant === 'individual') {
+            let annualRent = rent * 12;
+            // 傳統申報稅金：租金 x (1-43%) x 稅率
+            let traditionalTax = Math.round(annualRent * (1 - 0.43) * taxRate);
+            
+            // 公益出租人申報稅金：(每月租金 - 15000免稅額) x 12 x (1-43%) x 稅率
+            let welfareMonthlyTaxable = Math.max(0, rent - 15000);
+            let welfareTax = Math.round(welfareMonthlyTaxable * 12 * (1 - 0.43) * taxRate);
+            let savedAmount = traditionalTax - welfareTax;
+
             htmlStr = `
                 <div style="text-align:center; margin-bottom:10px;">
-                    <span style="font-size:1.2em; color:#38A169;"><i class="fas fa-check-circle"></i> 免預先代扣繳</span>
+                    <span style="font-size:1.1em; color:#38A169;"><i class="fas fa-check-circle"></i> 房客免代扣繳，房東全額實收：<b>${formatCurrency(rent)}</b> 元/月</span>
                 </div>
-                <div>👉 房客每月應付： <b>${formatCurrency(rent)}</b> 元</div>
-                <div>👉 房東每月實收： <span class="result-highlight">${formatCurrency(rent)}</span> 元</div>
+                <hr style="margin: 10px 0; border: 0.5px dashed #63B3ED;">
+                
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; font-size:0.9em; margin-top:15px;">
+                    <div style="background:#FFF5F5; padding:10px; border-radius:8px;">
+                        <div style="color:#C53030; font-weight:bold; margin-bottom:5px;">❌ 傳統自行申報</div>
+                        年租金收入：${formatCurrency(annualRent)}<br>
+                        (扣除43%成本率)<br>
+                        <span style="color:#C53030; font-weight:bold;">隔年應繳稅金：${formatCurrency(traditionalTax)}</span>
+                    </div>
+                    <div style="background:#F0FFF4; padding:10px; border-radius:8px;">
+                        <div style="color:#276749; font-weight:bold; margin-bottom:5px;">💖 加入公益出租人</div>
+                        (扣除每月 1.5 萬免稅額)<br>
+                        (再扣除43%成本率)<br>
+                        <span style="color:#276749; font-weight:bold;">隔年應繳稅金：${formatCurrency(welfareTax)}</span>
+                    </div>
+                </div>
+                <div style="text-align:center; margin-top:15px; font-size:1.1em; font-weight:bold; color:#1A365D;">
+                    💡 成為公益出租人，每年合法省下所得稅 <span style="color:#E53E3E; font-size:1.3em;">${formatCurrency(savedAmount)}</span> 元！
+                </div>
             `;
         }
 
         resultDiv.innerHTML = htmlStr;
     }
 
-    // --- 4. B2B 架構拆分精算邏輯 ---
+    // --- 5. B2B 頂峰家族辦公室架構拆分精算 ---
     function calculateB2BOptimization() {
         const total = parseFloat(document.getElementById('b2bTotalBudget').value);
         const taxRate = parseFloat(document.getElementById('b2bTaxRate').value);
@@ -845,23 +910,23 @@
 
         resultDiv.style.display = 'block';
         resultDiv.innerHTML = `
-            <div style="text-align:center; font-size:1.1em; color:#2D3748; margin-bottom:15px;">
-                💡 透過易丞架構拆分，每年可為房東省下：<br>
-                <span style="font-size:1.6em; color:#E53E3E; font-weight:900;">NT$ ${formatCurrency(savedTax)}</span>
+            <div style="text-align:center; font-size:1.1em; color:#E2E8F0; margin-bottom:15px;">
+                💡 導入易丞頂峰資產架構，每年防禦流失稅額：<br>
+                <span style="font-size:1.6em; color:var(--family-gold); font-weight:900;">NT$ ${formatCurrency(savedTax)}</span>
             </div>
-            <hr style="margin: 15px 0; border: 0.5px dashed #A0AEC0;">
-            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; font-size:0.9em;">
-                <div style="background:#FFF5F5; padding:10px; border-radius:8px;">
-                    <div style="color:#C53030; font-weight:bold; margin-bottom:5px;">❌ 傳統單一租約</div>
-                    月租金：${formatCurrency(total)}<br>
+            <hr style="margin: 15px 0; border: 0.5px dashed #4A5568;">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; font-size:0.9em; color:#CBD5E0;">
+                <div style="background:#2D3748; padding:10px; border-radius:8px; border:1px solid #4A5568;">
+                    <div style="color:#FC8181; font-weight:bold; margin-bottom:5px;">❌ 傳統單一租約裸奔</div>
+                    月租金設定：${formatCurrency(total)}<br>
                     年繳所得稅：${formatCurrency(tradIncomeTax)}<br>
                     年繳二代健保：${formatCurrency(tradNhiTax)}
                 </div>
-                <div style="background:#F0FFF4; padding:10px; border-radius:8px;">
-                    <div style="color:#276749; font-weight:bold; margin-bottom:5px;">✅ 易丞代管合約</div>
-                    月租金：${formatCurrency(optRent)}<br>
-                    易丞物管費：${formatCurrency(optMgmt)}<br>
-                    <span style="color:#276749; font-weight:bold;">年稅賦降至：${formatCurrency(optTotalTax)}</span>
+                <div style="background:#22543D; padding:10px; border-radius:8px; border:1px solid #38A169;">
+                    <div style="color:#9AE6B4; font-weight:bold; margin-bottom:5px;">✅ 易丞資產重組護城河</div>
+                    純租金設定：${formatCurrency(optRent)}<br>
+                    物管/商務費：${formatCurrency(optMgmt)}<br>
+                    <span style="color:#9AE6B4; font-weight:bold;">年稅賦遽降至：${formatCurrency(optTotalTax)}</span>
                 </div>
             </div>
         `;
