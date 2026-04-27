@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>不動產稅務全攻略 - 宏國地政｜易丞地政 (家族辦公室版)</title>
+    <title>不動產稅務全攻略 - 宏國地政｜易丞地政 (頂峰家族辦公室版)</title>
     <meta name="description" content="買房、持屋、賣房到底要繳哪些稅？房屋稅、地價稅、房地合一稅一次搞懂！宏國地政｜易丞地政專業解析。">
     
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -32,23 +32,17 @@
             --line-green: #06c755;
             --line-green-hover: #05b34c;
             --tab-bg: #EDF2F7;
-            --family-office: #1a202c; /* 尊榮黑 */
-            --family-gold: #D69E2E;   /* 尊榮金 */
+            --family-office: #1a202c; 
+            --family-gold: #D69E2E;   
             --welfare-color: #276749;
         }
 
         /* 基礎重置與排版 */
         body {
             font-family: "Microsoft JhengHei", "PingFang TC", "Apple LiGothic Medium", sans-serif;
-            background-color: var(--bg-color);
-            margin: 0;
-            padding: 0 0 100px 0;
-            color: var(--text-color);
-            line-height: 1.6;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
+            background-color: var(--bg-color); margin: 0; padding: 0 0 100px 0;
+            color: var(--text-color); line-height: 1.6; -webkit-user-select: none;
+            -moz-user-select: none; -ms-user-select: none; user-select: none;
             -webkit-tap-highlight-color: transparent; 
         }
 
@@ -80,7 +74,6 @@
         }
         .tab-btn.active { background: var(--primary-color); color: white; box-shadow: 0 4px 10px rgba(26, 54, 93, 0.3); }
         
-        /* 頂峰家族辦公室專屬按鈕樣式 */
         .tab-btn.b2b-btn { background: linear-gradient(135deg, #2D3748 0%, #1A202C 100%); color: var(--family-gold); border: 1px solid #4A5568;}
         .tab-btn.b2b-btn.active { background: linear-gradient(135deg, #000000 0%, #1A202C 100%); box-shadow: 0 4px 15px rgba(214, 158, 46, 0.4); border-color: var(--family-gold); }
 
@@ -95,7 +88,6 @@
         }
         .card h2 { color: var(--primary-color); border-left: 5px solid var(--accent-color); padding-left: 12px; margin-top: 0; font-size: 1.3em; }
         
-        /* 頂峰家族辦公室卡片樣式 */
         .b2b-card { border: 2px solid var(--family-gold); background: #1A202C; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); color: #E2E8F0; }
         .b2b-card h2 { color: var(--family-gold); border-left: 5px solid #CBD5E0; }
         .b2b-card label { color: #A0AEC0; }
@@ -136,7 +128,6 @@
         /* --- 表單與按鈕 --- */
         .info-alert { background-color: #FEFCBF; padding: 15px; border-radius: 8px; margin: 0 0 20px 0; font-size: 0.95em; border: 1px dashed #D69E2E; color: #744210; }
         .law-alert { background-color: #E6FFFA; padding: 15px; border-radius: 8px; margin: 0 0 20px 0; font-size: 0.9em; border: 1px solid #38B2AC; color: #234E52; transition: all 0.3s ease; }
-        .b2b-alert { background-color: #2D3748; padding: 15px; border-radius: 8px; margin: 0 0 20px 0; font-size: 0.95em; border: 1px solid var(--family-gold); color: #E2E8F0; font-weight: bold; }
         .welfare-alert { background-color: #FFFFFF; padding: 15px; border-radius: 8px; margin: 0 0 20px 0; font-size: 0.95em; border: 1px solid #9AE6B4; color: #276749; font-weight: bold; }
         
         .form-group { margin-bottom: 15px; transition: all 0.3s ease; }
@@ -192,11 +183,7 @@
         <button onclick="loginWithLine()" class="w-full btn-line-solid rounded-xl py-4 flex items-center justify-center font-bold text-base shadow-lg transform transition active:scale-95 hover:shadow-xl cursor-pointer">
             <i class="fab fa-line text-2xl mr-2"></i> 使用 LINE 登入並解鎖
         </button>
-        <div class="text-[10px] text-gray-400 mt-4">
-            <i class="fas fa-lock mr-1"></i> 經由 LINE OAuth 2.0 安全授權
-        </div>
     </div>
-    <div class="mt-8 text-xs text-blue-200 opacity-60 tracking-widest">© 2026 宏國地政 | 易丞地政</div>
 </div>
 
 <div id="main-content" style="display: none;">
@@ -239,46 +226,27 @@
                     <div class="tax-desc">最容易誤會！持有時間用途不同，稅率最高達 45%。</div>
                 </div>
             </div>
-
             <div class="card img-box">
                 <h2>📊 一張圖秒懂：房屋 vs 地價稅</h2>
                 <p style="color:#718096; margin-bottom: 10px;">點擊上方頁籤，立即為您自動試算！</p>
                 <img src="589889114321715546.jpg" alt="房屋稅與地價稅比較" class="content-img" onerror="this.style.display='none'">
             </div>
-
             <div class="card">
                 <h2>📚 節稅小學堂：不可不知的眉角</h2>
                 <div class="video-btn-wrapper">
-                    <a href="https://youtube.com/shorts/vSLtf6U8p8w?si=sP_p5lgEE8tkzd3W" target="_blank" class="btn-youtube">
-                        觀看專家影音完整解析
-                    </a>
+                    <a href="https://youtube.com/shorts/vSLtf6U8p8w?si=sP_p5lgEE8tkzd3W" target="_blank" class="btn-youtube">觀看專家影音完整解析</a>
                 </div>
-                <details>
-                    <summary>💡 房屋稅和地價稅的「自用」都要設戶籍嗎？</summary>
-                    <div class="details-content">沒錯！兩者都嚴格要求設立戶籍。<br>• <b>房屋稅：</b>必須是所有人或配偶、<b>直系親屬</b>辦竣戶籍登記。<br>• <b>地價稅：</b>同樣要求所有權人或配偶、<b>直系親屬</b>設戶籍，且兩者皆不可有出租或營業情形。</div>
-                </details>
-                <details>
-                    <summary>💡 兩間以上的房子，都能申請「自用地價稅」嗎？</summary>
-                    <div class="details-content">地價稅規定本人、配偶及未成年子女原則上以「一處」為限。<br><br><b>✨ 易丞專業破解秘訣：</b><br>若有第二間房，可利用「成年子女」、「父母」或「祖父母」等其他直系親屬去設立戶籍，只要符合面積限制，第二間也能享有千分之二的極優惠稅率！</div>
-                </details>
-                <details>
-                    <summary>💡 什麼是「全國總歸戶」？囤房稅多高？</summary>
-                    <div class="details-content">現在是「全台灣」的應稅房屋合併計算戶數！針對「非自住住家」，稅率最高可達 4.8%。<br><br>🎁 但若您本人、配偶及未成年子女全台灣只有一間房子且供自住（一定現值下），稅率會降至 1.0% 的超優惠大紅包！</div>
-                </details>
+                <details><summary>💡 房屋稅和地價稅的「自用」都要設戶籍嗎？</summary><div class="details-content">兩者都嚴格要求設立戶籍（本人或直系親屬），且不可出租或營業。</div></details>
+                <details><summary>💡 兩間以上的房子，都能申請「自用地價稅」嗎？</summary><div class="details-content">利用成年子女、父母等直系親屬設戶籍，符合面積限制即可享千分之二優惠！</div></details>
+                <details><summary>💡 什麼是「全國總歸戶」？囤房稅多高？</summary><div class="details-content">現在是「全台灣」房屋合併計算！非自住最高達 4.8%。但單一自住可降至 1.0%。</div></details>
             </div>
         </div>
 
         <div id="tab-house" class="tab-content">
             <div class="card">
                 <h2>🏠 房屋稅 2.0 智慧試算</h2>
-                <div class="info-alert">
-                    <b>⚠️ 囤房稅豁免專區：</b><br>
-                    「繼承共有」、「商用營業」、「包租代管/公益出租」及「自住」，都<b>不會</b>被算進 2.0%~4.8% 囤房重稅！加入包租代管更享 <b>1.2%</b> 自住同等優惠！
-                </div>
-                <div class="form-group">
-                    <label for="houseValue">房屋現值 (元)</label>
-                    <input type="number" id="houseValue" placeholder="例如：1000000" min="0">
-                </div>
+                <div class="info-alert"><b>⚠️ 囤房稅豁免專區：</b>繼承共有、商用、包租代管及自住，不會被算進 2.0%~4.8% 囤房重稅！</div>
+                <div class="form-group"><label for="houseValue">房屋現值 (元)</label><input type="number" id="houseValue" placeholder="例如：1000000" min="0"></div>
                 <div class="form-group">
                     <label for="houseType">房屋使用情形 (智慧分類)</label>
                     <select id="houseType">
@@ -301,17 +269,13 @@
                 </div>
                 <button class="calc-btn" onclick="calculateHouseTax()">結算預估房屋稅</button>
                 <div id="houseResult" class="result"></div>
-                <div class="note">* 註：實際稅率依各縣市政府當年訂定自治條例為準，本試算採參考稅率估算。</div>
             </div>
         </div>
 
         <div id="tab-house-tainan" class="tab-content">
             <div class="card">
                 <h2>🏰 台南市專屬房屋稅試算 (114年7月起)</h2>
-                <div class="info-alert">
-                    <b>🎯 結合宏國在地深耕優勢：</b><br>
-                    台南市依據「全國總歸戶」實施嚴格差別稅率，並針對「建商待售」及「出租/繼承」詳細規範。
-                </div>
+                <div class="info-alert"><b>🎯 結合宏國在地深耕優勢：</b>台南市依據「全國總歸戶」實施差別稅率，並針對「建商待售」及「出租/繼承」詳細規範。</div>
                 <div class="form-group"><label for="houseValueTN">房屋現值 (元)</label><input type="number" id="houseValueTN" placeholder="例如：1000000" min="0"></div>
                 <div class="form-group">
                     <label for="houseTypeTN">台南市房屋使用情形</label>
@@ -334,7 +298,7 @@
                             <option value="0.048">【建商待售】超過5年 (4.8%)</option>
                         </optgroup>
                         <optgroup label="📈 非自住 - 其他 (囤房稅)">
-                            <option value="0.026">【囤房稅】2戶以內 (2.6%) *註:113/7~114/6為3.2%</option>
+                            <option value="0.026">【囤房稅】2戶以內 (2.6%)</option>
                             <option value="0.038">【囤房稅】3~4戶 (3.8%)</option>
                             <option value="0.042">【囤房稅】5~6戶 (4.2%)</option>
                             <option value="0.048">【囤房稅】7戶以上 (4.8%)</option>
@@ -401,9 +365,7 @@
         <div id="tab-rent" class="tab-content">
             <div class="card">
                 <h2>🏢 房東租賃稅全方位試算</h2>
-                <div id="rentLawAlert" class="law-alert">
-                    <b>⚖️ 法規智能判斷中...</b> 請選擇雙方身分。
-                </div>
+                <div id="rentLawAlert" class="law-alert"><b>⚖️ 法規智能判斷中...</b> 請選擇雙方身分。</div>
                 
                 <div class="form-row">
                     <div class="form-group">
@@ -429,77 +391,65 @@
 
                 <div class="form-group" id="rentConditionGroup">
                     <label id="rentConditionLabel" for="rentCondition">稅費負擔約定方式</label>
-                    <select id="rentCondition">
-                        </select>
+                    <select id="rentCondition"></select>
                 </div>
 
                 <div class="form-group" id="rentTaxRateGroup">
-                    <label for="rentTaxRate"><i class="fas fa-calculator"></i> 房東綜合所得稅級距估計</label>
+                    <label for="rentTaxRate"><i class="fas fa-calculator"></i> 房東個人綜合所得稅級距</label>
                     <select id="rentTaxRate">
                         <option value="0.05">5% (小資族)</option>
                         <option value="0.12">12% (中產階級)</option>
-                        <option value="0.2">20% (中高資產)</option>
+                        <option value="0.2" selected>20% (中高資產)</option>
                         <option value="0.3">30% (高淨值)</option>
                         <option value="0.4">40% (頂級大戶)</option>
                     </select>
                 </div>
 
-                <button class="calc-btn" onclick="calculateRentTax()">精算租賃稅費 (含國稅局綜所稅對比)</button>
+                <button class="calc-btn" onclick="calculateRentTax()">精算稅費 (含節稅魔法解析)</button>
                 <div id="rentResult" class="result result-left"></div>
             </div>
 
             <div class="card welfare-card">
                 <h2>💖 公益出租人專區 (包租代管 / 租金補貼)</h2>
-                <div class="welfare-alert">
-                    <b>✨ 政策利多：</b> 只要將房屋出租給符合「租金補貼」資格的房客，或委託加入「社會住宅包租代管」，房東即可自動成為「公益出租人」，享有三大稅賦超強減免！(資料來源: 內政部)
-                </div>
+                <div class="welfare-alert"><b>✨ 政策利多：</b> 出租給符合租金補貼資格的房客，或委託「社會住宅包租代管」，即享三大稅賦減免！</div>
                 
                 <div class="tax-grid">
                     <div class="tax-card" style="border-left-color: #4299E1; background: #EBF8FF;">
                         <h3 style="color: #2B6CB0;">💰 綜合所得稅</h3>
                         <div class="tax-items">每月最高 1.5 萬免稅額</div>
-                        <div class="tax-desc">每屋(依門牌)每月租金收入1.5萬內免納所得稅！超過部分還可扣除 43% 法定必要費用。</div>
+                        <div class="tax-desc">每屋每月租金 1.5萬 內免納所得稅！超過部分，仍可扣除法定 43% 必要費用。(限自然人)</div>
                     </div>
                     <div class="tax-card" style="border-left-color: #DD6B20; background: #FFFAF0;">
                         <h3 style="color: #C05621;">🏠 房屋稅</h3>
                         <div class="tax-items">比照自住優惠 1.2%</div>
-                        <div class="tax-desc">完全不受囤房重稅(2.0%~4.8%)影響，不論名下有幾戶，通通適用最低的自住稅率。</div>
+                        <div class="tax-desc">完全不受囤房重稅(2.0%~4.8%)影響，適用最低的自住稅率。(法人/自然人皆可)</div>
                     </div>
                     <div class="tax-card" style="border-left-color: #38A169; background: #F0FFF4;">
                         <h3 style="color: #276749;">🌱 地價稅</h3>
                         <div class="tax-items">比照自用住宅 2‰</div>
-                        <div class="tax-desc">一般用地為 10‰ 起跳，公益出租直接降至 2‰，為您省下至少 5 倍的地價稅金！</div>
+                        <div class="tax-desc">一般用地 10‰ 起，公益出租直接降至 2‰。(法人/自然人皆可)</div>
                     </div>
                 </div>
 
                 <h3 style="color: #276749; margin-top: 20px; font-size: 1.2em; font-weight: bold; border-bottom: 2px solid #9AE6B4; padding-bottom: 5px;">❓ 常見問題與解答 (Q&A)</h3>
                 
                 <details style="border-left-color:#38A169; margin-top:15px;">
-                    <summary style="color:#276749;">Q1: 什麼是「公益出租人」？</summary>
+                    <summary style="color:#276749;">Q1: 什麼是「公益出租人」？法人也可以嗎？</summary>
                     <div class="details-content">
-                        只要房屋所有權人，將住宅出租給符合「租金補貼」申請資格的房客（如一般補貼戶、中低收入戶等），經主管機關認定後，即為公益出租人。<b>特別注意：法人也可以是公益出租人！</b>
+                        經地方主管機關認定，將住宅出租給符合「租金補貼」資格者即是。<br>
+                        <b>🚨 注意：法人也可以是公益出租人！</b> 但《住宅法》第15條規定，1.5萬免稅額僅限「個人綜合所得稅」。法人房東享有房屋/地價稅優惠，但租金收入仍須全額申報營所稅。
                     </div>
                 </details>
-
                 <details style="border-left-color:#38A169;">
-                    <summary style="color:#276749;">Q2: 我需要自己主動去申請這些優惠嗎？</summary>
+                    <summary style="color:#276749;">Q2: 我需要自己主動去申請嗎？戶數有限制嗎？</summary>
                     <div class="details-content">
-                        <b>綜合所得稅與房屋稅：</b> 通常免主動申請！房客申請補貼核准後，政府會將清冊交給國稅局與稅務局自動套用優惠。<br>
-                        <b>地價稅：</b> 部分縣市需主動於開徵 40 天前提出申請。建議交由易丞地政為您全面把關！
+                        政府通常會根據房客申請資料自動套用國稅局優惠。<br><b>完全沒有戶數限制！</b> 名下 10 戶房屋(依門牌)，就能獨立享有 10 個 1.5 萬免稅額！
                     </div>
                 </details>
-
                 <details style="border-left-color:#38A169;">
-                    <summary style="color:#276749;">Q3: 如果我有好幾間房子出租，戶數有限制嗎？</summary>
+                    <summary style="color:#276749;">Q3: 如果我加入「社會住宅包租代管」，優惠會更好嗎？</summary>
                     <div class="details-content">
-                        <b>完全沒有戶數限制！</b> 只要符合條件，名下 10 戶房屋分別出租，每一戶（以門牌為準）都能享有每月 1.5 萬免稅額與房屋地價稅自住優惠。
-                    </div>
-                </details>
-                
-                <details style="border-left-color:#38A169;">
-                    <summary style="color:#276749;">Q4: 房子是老公的名字，可以用老婆的名字簽約出租嗎？</summary>
-                    <div class="details-content">
-                        <b>不行！</b> 租賃契約上的「出租人」必須是「房屋所有權人」，才能享有上述所有稅賦優惠。如果是共有房屋，需將所有共有人都列名為出租人。
+                        <b>會的！</b> 不僅享有每月 1.5 萬免稅額，超過 1.5 萬的部分，法定費用扣除率可從一般的 43% 提高至 <b>60%</b>！節稅效果極度驚人，歡迎洽詢易丞地政。
                     </div>
                 </details>
                 
@@ -514,11 +464,11 @@
                 <h2>👑 頂峰家族辦公室：企業級資產護城河</h2>
                 <div class="b2b-alert" style="background-color: #2D3748; color: #E2E8F0;">
                     <i class="fas fa-chess-king" style="color: var(--family-gold);"></i> <b>高端資產架構重組：</b>將傳統「單一高額租金」轉化為「租金 + 易丞物業管理服務費」。<br>
-                    由易丞地政擔任包租代管方開立發票，合法降低房東之「個人租賃所得稅」與房客之「二代健保代扣壓力」，創造頂峰財富效益！
+                    由易丞地政擔任代管方開立發票，合法降低房東的「個人租賃所得稅」與房客的「二代健保代扣壓力」，創造頂峰財富效益！
                 </div>
 
                 <div class="law-alert" style="background-color: #1A202C; border-color: #4A5568; color: #A0AEC0; margin-top:15px;">
-                    <b>⚖️ 法源依據：</b>依《所得稅法》第14條及財政部函釋，租賃財產之管理費、清潔費若於契約中明確劃分並由代管業者開立憑證，則不列入房東之租賃所得計算。
+                    <b>⚖️ 法源依據：</b>依《所得稅法》第14條及財政部函釋，租賃財產之管理費、清潔費若於契約中明確劃分並由代管業者開立憑證，則不列入房東之租賃所得。
                 </div>
 
                 <div class="form-group">
@@ -547,17 +497,12 @@
             <p style="margin-top: 15px;">📞 <a href="tel:062582589" style="color:#4A5568;text-decoration:none;">06-2582589</a><br>
             📮 台南市北區文賢路1080巷11號</p>
         </footer>
-
     </div>
 
     <div class="bottom-bar">
         <div class="bottom-bar-inner">
-            <a href="https://g.page/r/CcUysPsgjeseEAI/review" target="_blank" class="btn-action btn-review">
-                ⭐ 給予五星好評
-            </a>
-            <a href="https://line.me/ti/g2/aVklWxyLP1RtfstQsslGQOlP4KViuFI7PPucdQ" target="_blank" class="btn-action btn-line">
-                💬 加入 LINE 研究社
-            </a>
+            <a href="https://g.page/r/CcUysPsgjeseEAI/review" target="_blank" class="btn-action btn-review">⭐ 給予五星好評</a>
+            <a href="https://line.me/ti/g2/aVklWxyLP1RtfstQsslGQOlP4KViuFI7PPucdQ" target="_blank" class="btn-action btn-line">💬 加入 LINE 研究社</a>
         </div>
     </div>
 </div>
@@ -573,8 +518,6 @@
         const authStatus = urlParams.get('nexus_auth');
         const authGate = document.getElementById('nexus-auth-gate');
         const mainContent = document.getElementById('main-content');
-        const errorMsg = document.getElementById('auth-error-msg');
-        const errorText = document.getElementById('auth-error-text');
 
         let isUnlocked = false;
 
@@ -582,16 +525,8 @@
             localStorage.setItem('hg_line_auth', 'true');
             isUnlocked = true;
             window.history.replaceState({}, document.title, window.location.pathname);
-        } else if (authStatus === 'failed_not_friend') {
-            localStorage.removeItem('hg_line_auth');
-            isUnlocked = false;
-            errorText.innerText = "授權失敗：系統偵測到您尚未加入好友或已封鎖官方帳號。請重新登入並務必勾選加入好友。";
-            errorMsg.style.display = 'flex';
-            window.history.replaceState({}, document.title, window.location.pathname);
         } else {
-            if (localStorage.getItem('hg_line_auth') === 'true') {
-                isUnlocked = true;
-            }
+            if (localStorage.getItem('hg_line_auth') === 'true') isUnlocked = true;
         }
 
         if (isUnlocked) {
@@ -599,7 +534,7 @@
             mainContent.style.display = 'block';
             document.body.style.overflow = 'auto';
             updateProgressiveStart();
-            updateRentUI(); // 初始化租賃稅 UI
+            updateRentUI(); 
         } else {
             authGate.style.display = 'flex';
             mainContent.style.display = 'none';
@@ -608,121 +543,66 @@
     }
 
     function loginWithLine() {
-        const currentBaseUrl = window.location.origin + window.location.pathname;
-        window.location.href = `${gasAuthUrl}?state=${encodeURIComponent(currentBaseUrl)}`;
+        window.location.href = `${gasAuthUrl}?state=${encodeURIComponent(window.location.origin + window.location.pathname)}`;
     }
-
     document.addEventListener('DOMContentLoaded', initAuth);
 
     // ==========================================
     // 🌟 業務邏輯與精算引擎
     // ==========================================
-
     function switchTab(evt, tabId) {
-        let contents = document.getElementsByClassName("tab-content");
-        for (let i = 0; i < contents.length; i++) {
-            contents[i].classList.remove("active");
-        }
-        let btns = document.getElementsByClassName("tab-btn");
-        for (let i = 0; i < btns.length; i++) {
-            btns[i].classList.remove("active");
-        }
+        document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
         document.getElementById(tabId).classList.add("active");
         if(evt && evt.currentTarget) {
             evt.currentTarget.classList.add("active");
             evt.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         }
     }
+    function formatCurrency(num) { return Math.round(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
 
-    function formatCurrency(num) {
-        return Math.round(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
-
-    // --- 1. 房屋稅試算 ---
+    // --- 房屋與地價稅 ---
     function calculateHouseTax() {
-        const value = parseFloat(document.getElementById('houseValue').value);
+        const val = parseFloat(document.getElementById('houseValue').value) || 0;
         const type = document.getElementById('houseType').value;
-        const resultDiv = document.getElementById('houseResult');
-        if (isNaN(value) || value <= 0) { alert('請輸入有效的房屋現值！'); return; }
-
-        let rate = 0;
-        switch(type) {
-            case 'single_self': rate = 0.01; break;
-            case 'general_self': rate = 0.012; break;
-            case 'social': rate = 0.012; break;
-            case 'inherit': rate = 0.015; break;
-            case 'commercial': rate = 0.03; break;
-            case 'hoard_2': rate = 0.032; break;
-            case 'hoard_4': rate = 0.038; break;
-            case 'hoard_6': rate = 0.042; break;
-            case 'hoard_7': rate = 0.048; break;
-        }
-        const tax = value * rate;
-        resultDiv.style.display = 'block';
-        let extraMsg = type === 'social' ? `<br><span style="font-size:0.9em; color:#D69E2E;">🎉 包租代管為您省下大筆囤房稅！</span>` : "";
-        resultDiv.innerHTML = `預估每年房屋稅：<br><span style="font-size:1.3em;">NT$ ${formatCurrency(tax)}</span> 元${extraMsg}`;
+        let rate = { 'single_self':0.01, 'general_self':0.012, 'social':0.012, 'inherit':0.015, 'commercial':0.03, 'hoard_2':0.032, 'hoard_4':0.038, 'hoard_6':0.042, 'hoard_7':0.048 }[type] || 0;
+        document.getElementById('houseResult').style.display = 'block';
+        document.getElementById('houseResult').innerHTML = `NT$ ${formatCurrency(val * rate)}`;
     }
-
     function calculateHouseTaxTN() {
-        const value = parseFloat(document.getElementById('houseValueTN').value);
-        const rate = parseFloat(document.getElementById('houseTypeTN').value);
-        const resultDiv = document.getElementById('houseResultTN');
-        if (isNaN(value) || value <= 0) { alert('請輸入有效的房屋現值！'); return; }
-        resultDiv.style.display = 'block';
-        resultDiv.innerHTML = `台南市預估每年房屋稅：<br><span style="font-size:1.3em;">NT$ ${formatCurrency(value * rate)}</span> 元`;
+        const val = parseFloat(document.getElementById('houseValueTN').value) || 0;
+        const rate = parseFloat(document.getElementById('houseTypeTN').value) || 0;
+        document.getElementById('houseResultTN').style.display = 'block';
+        document.getElementById('houseResultTN').innerHTML = `NT$ ${formatCurrency(val * rate)}`;
     }
-
-    // --- 2. 地價稅試算 ---
     function updateLandTotal() {
-        let area = parseFloat(document.getElementById('landArea').value) || 0;
-        let unitPrice = parseFloat(document.getElementById('landUnitPrice').value) || 0;
-        if(area > 0 && unitPrice > 0) document.getElementById('landValue').value = Math.round(area * unitPrice);
+        let a = parseFloat(document.getElementById('landArea').value)||0, p = parseFloat(document.getElementById('landUnitPrice').value)||0;
+        if(a>0 && p>0) document.getElementById('landValue').value = Math.round(a*p);
     }
-
     function updateProgressiveStart() {
-        let selectVal = document.getElementById('countySelect').value;
-        let inputField = document.getElementById('progressiveStart');
-        if(selectVal !== 'other') {
-            inputField.value = selectVal;
-            inputField.readOnly = true;
-            inputField.style.backgroundColor = "#EDF2F7";
-        } else {
-            inputField.value = "";
-            inputField.readOnly = false;
-            inputField.style.backgroundColor = "#FAFAFA";
-            inputField.focus();
-        }
+        let sel = document.getElementById('countySelect').value, inp = document.getElementById('progressiveStart');
+        if(sel !== 'other') { inp.value = sel; inp.readOnly = true; inp.style.backgroundColor = "#EDF2F7"; }
+        else { inp.value = ""; inp.readOnly = false; inp.style.backgroundColor = "#FAFAFA"; inp.focus(); }
     }
-
     function calculateLandTax() {
-        const value = parseFloat(document.getElementById('landValue').value);
+        const val = parseFloat(document.getElementById('landValue').value)||0;
         const type = document.getElementById('landType').value;
-        let pStartInput = parseFloat(document.getElementById('progressiveStart').value);
-        const P = isNaN(pStartInput) || pStartInput <= 0 ? 2000000 : pStartInput; 
-        const resultDiv = document.getElementById('landResult');
-
-        if (isNaN(value) || value <= 0) { alert('請確認「申報地價總額」是否有數值！'); return; }
-
+        const P = parseFloat(document.getElementById('progressiveStart').value)||2000000;
         let tax = 0;
-        if (type === 'self') {
-            tax = value * 0.002;
-        } else {
-            if (value <= P) tax = value * 0.010; 
-            else if (value <= P * 6) tax = (value * 0.015) - (P * 0.005); 
-            else if (value <= P * 11) tax = (value * 0.025) - (P * 0.065); 
-            else if (value <= P * 16) tax = (value * 0.035) - (P * 0.175); 
-            else if (value <= P * 21) tax = (value * 0.045) - (P * 0.335); 
-            else tax = (value * 0.055) - (P * 0.545); 
+        if (type === 'self') tax = val * 0.002;
+        else {
+            if (val <= P) tax = val * 0.010; 
+            else if (val <= P * 6) tax = (val * 0.015) - (P * 0.005); 
+            else if (val <= P * 11) tax = (val * 0.025) - (P * 0.065); 
+            else if (val <= P * 16) tax = (val * 0.035) - (P * 0.175); 
+            else if (val <= P * 21) tax = (val * 0.045) - (P * 0.335); 
+            else tax = (val * 0.055) - (P * 0.545); 
         }
-
-        resultDiv.style.display = 'block';
-        let msg = `預估每年地價稅：<br><span style="font-size:1.3em;">NT$ ${formatCurrency(tax)}</span> 元`;
-        if (type === 'general' && value > P) msg += `<br><span style="font-size:0.85em; color:#E53E3E;">⚠️ 已超過累進起點，啟動階梯式累進重稅！</span>`;
-        else if (type === 'self') msg += `<br><span style="font-size:0.85em; color:#38A169;">✨ 已套用千分之二超省稅率！</span>`;
-        resultDiv.innerHTML = msg;
+        document.getElementById('landResult').style.display = 'block';
+        document.getElementById('landResult').innerHTML = `NT$ ${formatCurrency(tax)}`;
     }
 
-    // --- 3. 房東租賃稅全矩陣邏輯 (新增國稅局所得稅運算) ---
+    // --- 房東租賃稅全矩陣邏輯 ---
     function updateRentUI() {
         const landlord = document.getElementById('rentLandlord').value;
         const tenant = document.getElementById('rentTenant').value;
@@ -733,39 +613,27 @@
         const taxRateGroup = document.getElementById('rentTaxRateGroup');
         
         conditionSelect.innerHTML = ''; 
+        taxRateGroup.style.display = (landlord === 'individual') ? 'block' : 'none'; // 只有自然人能選綜所稅級距
         
-        // 若房東是自然人，顯示綜所稅級距選項
-        if (landlord === 'individual') {
-            taxRateGroup.style.display = 'block';
-        } else {
-            taxRateGroup.style.display = 'none';
-        }
-        
-        // 情況 1: 個人 租給 法人
+        // 個人 -> 法人 (專注於代扣繳與B端引導，不再做年度反推)
         if (landlord === 'individual' && tenant === 'corporate') {
-            alertBox.innerHTML = `<b>⚖️ 稅法警報：</b>房客(公司)為扣繳義務人。當單次租金達 <b>2萬元(含)</b> 時，房客需代扣 <b>10% 租賃所得稅</b> 與 <b>2.11% 二代健保</b>。若約定實拿，房客需逆算吸收稅額。`;
+            alertBox.innerHTML = `<b>⚖️ 稅法指示：</b>公司承租時，負有代扣 <b>10% 所得稅</b> 與 <b>2.11% 二代健保</b> 之法定義務。`;
             alertBox.style.borderColor = '#E53E3E'; alertBox.style.color = '#C53030'; alertBox.style.backgroundColor = '#FFF5F5';
             conditionLabel.innerText = "稅費負擔約定方式";
-            conditionSelect.innerHTML = `
-                <option value="gross">【含稅】房東負擔 (房客從約定租金內扣稅代繳)</option>
-                <option value="net">【實拿】房客負擔 (房東實拿，房客需「逆算」墊高成本)</option>
-            `;
+            conditionSelect.innerHTML = `<option value="gross">【含稅】從約定租金內扣稅代繳</option><option value="net">【實拿】房客逆算吸收(墊高成本)</option>`;
             conditionGroup.style.opacity = '1'; conditionGroup.style.pointerEvents = 'auto';
         } 
-        // 情況 2: 法人 租給 任何人
+        // 法人 -> 任何人 (營業稅)
         else if (landlord === 'corporate') {
-            alertBox.innerHTML = `<b>⚖️ 法規指示：</b>房東為法人，需自行申報營所稅。<b>免扣 10% 所得稅與二代健保</b>，但通常需開立發票並外加 <b>5% 營業稅</b>。`;
+            alertBox.innerHTML = `<b>⚖️ 法規指示：</b>法人房東免被預扣所得稅與二代健保。需外加 <b>5% 營業稅</b> 開立發票。`;
             alertBox.style.borderColor = '#3182CE'; alertBox.style.color = '#2B6CB0'; alertBox.style.backgroundColor = '#EBF8FF';
             conditionLabel.innerText = "發票營業稅 (5%) 處理方式";
-            conditionSelect.innerHTML = `
-                <option value="gross">【含稅】已含 5% 營業稅 (房東從租金內含開發票)</option>
-                <option value="net">【未稅】未含營業稅 (房客需額外支付 5% 給房東)</option>
-            `;
+            conditionSelect.innerHTML = `<option value="gross">【含稅】約定租金已含 5%</option><option value="net">【未稅】房客需外加 5%</option>`;
             conditionGroup.style.opacity = '1'; conditionGroup.style.pointerEvents = 'auto';
         }
-        // 情況 3: 個人 租給 個人
+        // 個人 -> 個人 (傳統 vs 公益出租)
         else if (landlord === 'individual' && tenant === 'individual') {
-            alertBox.innerHTML = `<b>⚖️ 法規指示：</b>雙方皆為自然人，<b>房客無預先扣繳義務</b>。房東實收約定租金，隔年5月自行申報「綜合所得稅」即可。`;
+            alertBox.innerHTML = `<b>⚖️ 法規指示：</b>個人互租 <b>免預先代扣繳</b>！只需留意年底申報「綜合所得稅」之差異。(請見下方公益出租對比👇)`;
             alertBox.style.borderColor = '#38A169'; alertBox.style.color = '#276749'; alertBox.style.backgroundColor = '#F0FFF4';
             conditionSelect.innerHTML = `<option value="none">免預扣繳，房東全額實收</option>`;
             conditionGroup.style.opacity = '0.3'; conditionGroup.style.pointerEvents = 'none';
@@ -777,15 +645,14 @@
         const landlord = document.getElementById('rentLandlord').value;
         const tenant = document.getElementById('rentTenant').value;
         const condition = document.getElementById('rentCondition').value;
-        const taxRate = parseFloat(document.getElementById('rentTaxRate').value) || 0; // 所得稅率
+        const taxRate = parseFloat(document.getElementById('rentTaxRate').value) || 0; 
         const resultDiv = document.getElementById('rentResult');
 
-        if (isNaN(rent) || rent <= 0) { alert('請輸入有效的約定月租金！'); return; }
-
+        if (isNaN(rent) || rent <= 0) { alert('請輸入月租金！'); return; }
         resultDiv.style.display = 'block';
         let htmlStr = '';
 
-        // --- 矩陣計算 A: 個人 租給 法人 ---
+        // 矩陣 A: 個人 -> 法人 (只算當下代扣繳，引導去 B2B 頁面)
         if (landlord === 'individual' && tenant === 'corporate') {
             let baseRent = 0, incomeTax = 0, nhiTax = 0;
             if (condition === 'net') {
@@ -796,50 +663,41 @@
                 } else { baseRent = rent; }
             } else {
                 baseRent = rent;
-                if (baseRent >= 20000) {
-                    incomeTax = Math.round(baseRent * 0.1);
-                    nhiTax = Math.round(baseRent * 0.0211);
-                }
+                if (baseRent >= 20000) { incomeTax = Math.round(baseRent * 0.1); nhiTax = Math.round(baseRent * 0.0211); }
             }
             let actualToLandlord = condition === 'net' ? rent : Math.round(baseRent - incomeTax - nhiTax);
             let totalCostToTenant = condition === 'net' ? Math.round(baseRent) : rent;
             
-            // 計算房東年底真實要繳的所得稅 (以 43% 扣除率計算)
-            let annualBase = baseRent * 12;
-            let realAnnualTax = Math.round(annualBase * (1 - 0.43) * taxRate);
-            let prePaidTax = incomeTax * 12; // 已預先扣繳的稅
-            let taxDiffMsg = realAnnualTax > prePaidTax ? `年底需補繳 ${formatCurrency(realAnnualTax - prePaidTax)} 元` : `年底可退稅 ${formatCurrency(prePaidTax - realAnnualTax)} 元`;
-
             htmlStr = `
                 <div>💰 申報給付總額： <b>${formatCurrency(baseRent)}</b> 元</div>
                 <hr style="margin: 10px 0; border: 0.5px dashed #63B3ED;">
-                <div>🏢 房客每月代扣所得稅(10%)： <b>${formatCurrency(incomeTax)}</b> 元</div>
-                <div>🏥 房客每月代扣二代健保(2.11%)： <b>${formatCurrency(nhiTax)}</b> 元</div>
+                <div>🏢 房客每月代扣所得稅： <b>${formatCurrency(incomeTax)}</b> 元</div>
+                <div>🏥 房客每月代扣二代健保： <b>${formatCurrency(nhiTax)}</b> 元</div>
                 <hr style="margin: 10px 0; border: 0.5px dashed #63B3ED;">
                 <div style="color: #2D3748;">👉 房東每月實收： <span class="result-highlight">${formatCurrency(actualToLandlord)}</span> 元</div>
                 <div style="color: #2D3748;">👉 公司每月總成本： <b>${formatCurrency(totalCostToTenant)}</b> 元</div>
-                <div style="margin-top:15px; padding:10px; background:#F7FAFC; border-radius:8px; font-size:0.9em;">
-                    <div style="font-weight:bold; color:#2B6CB0; margin-bottom:5px;">📊 國稅局年度綜所稅精算 (級距 ${taxRate*100}%)</div>
-                    全年應納租賃所得稅：${formatCurrency(realAnnualTax)} 元<br>
-                    (房客已代繳 ${formatCurrency(prePaidTax)} 元，${taxDiffMsg})
-                </div>
             `;
-            if(condition === 'net') htmlStr += `<div style="margin-top:10px; font-size:0.85em; color:#E53E3E; font-weight:bold;">⚠️ 公司需逆算吸收稅費，成本暴增！請參考上方「👑 頂峰家族辦公室」架構拆分來避稅。</div>`;
+            if(condition === 'net') {
+                htmlStr += `<div style="margin-top:15px; padding:10px; background:#FFF5F5; border-left:4px solid #E53E3E; font-size:0.9em; font-weight:bold; color:#C53030;">
+                    🚨 公司需「逆算」墊高租金成本來代繳稅費！想幫公司合法節稅？<br>請點選上方「👑 頂峰家族辦公室」查看易丞架構拆分解法！
+                </div>`;
+            } else {
+                htmlStr += `<div style="margin-top:15px; padding:10px; background:#F0FFF4; border-left:4px solid #38A169; font-size:0.9em; font-weight:bold; color:#276749;">
+                    💡 若房東覺得被扣稅太痛，請點選上方「👑 頂峰家族辦公室」，易丞能幫房東大幅降低個人稅基！
+                </div>`;
+            }
         } 
-        
-        // --- 矩陣計算 B: 法人 租給 任何人 ---
+        // 矩陣 B: 法人 -> 任何人
         else if (landlord === 'corporate') {
             let baseRent, vat, total;
             if (condition === 'gross') {
-                total = rent;
-                baseRent = Math.round(total / 1.05);
-                vat = total - baseRent;
+                total = rent; baseRent = Math.round(total / 1.05); vat = total - baseRent;
             } else { 
-                baseRent = rent;
-                vat = Math.round(baseRent * 0.05);
-                total = baseRent + vat;
+                baseRent = rent; vat = Math.round(baseRent * 0.05); total = baseRent + vat;
             }
             htmlStr = `
+                <div style="text-align:center; margin-bottom:10px;"><span style="font-size:1.1em; color:#2B6CB0;"><i class="fas fa-building"></i> 法人出租結算</span></div>
+                <hr style="margin: 10px 0; border: 0.5px dashed #63B3ED;">
                 <div>💰 租金銷售額 (未稅)： <b>${formatCurrency(baseRent)}</b> 元</div>
                 <div>🧾 發票營業稅 (5%)： <b>${formatCurrency(vat)}</b> 元</div>
                 <hr style="margin: 10px 0; border: 0.5px dashed #63B3ED;">
@@ -847,40 +705,46 @@
                 <div style="color: #2D3748;">👉 房客每月應付總額： <b>${formatCurrency(total)}</b> 元</div>
             `;
         }
-        
-        // --- 矩陣計算 C: 個人 租給 個人 (國稅局 vs 公益出租人 強烈對比) ---
+        // 矩陣 C: 個人 -> 個人 (傳統申報 VS 公益出租人 強烈對比)
         else if (landlord === 'individual' && tenant === 'individual') {
             let annualRent = rent * 12;
-            // 傳統申報稅金：租金 x (1-43%) x 稅率
-            let traditionalTax = Math.round(annualRent * (1 - 0.43) * taxRate);
             
-            // 公益出租人申報稅金：(每月租金 - 15000免稅額) x 12 x (1-43%) x 稅率
+            // 傳統申報稅金：租金 x 12 x (1-43%) x 稅率
+            let traditionalTaxable = annualRent * (1 - 0.43);
+            let traditionalTax = Math.round(traditionalTaxable * taxRate);
+            
+            // 公益出租人稅金：(每月租金 - 15000免稅額) x 12 x (1-43%) x 稅率
             let welfareMonthlyTaxable = Math.max(0, rent - 15000);
-            let welfareTax = Math.round(welfareMonthlyTaxable * 12 * (1 - 0.43) * taxRate);
+            let welfareAnnualTaxable = welfareMonthlyTaxable * 12 * (1 - 0.43);
+            let welfareTax = Math.round(welfareAnnualTaxable * taxRate);
+            
             let savedAmount = traditionalTax - welfareTax;
 
             htmlStr = `
                 <div style="text-align:center; margin-bottom:10px;">
-                    <span style="font-size:1.1em; color:#38A169;"><i class="fas fa-check-circle"></i> 房客免代扣繳，房東全額實收：<b>${formatCurrency(rent)}</b> 元/月</span>
+                    <span style="font-size:1.1em; color:#2B6CB0;"><i class="fas fa-balance-scale"></i> 年度綜合所得稅：傳統 vs 公益</span><br>
+                    <span style="font-size:0.85em; color:#718096;">(雙方皆享有法定 43% 必要費用扣除率)</span>
                 </div>
-                <hr style="margin: 10px 0; border: 0.5px dashed #63B3ED;">
                 
                 <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; font-size:0.9em; margin-top:15px;">
                     <div style="background:#FFF5F5; padding:10px; border-radius:8px;">
                         <div style="color:#C53030; font-weight:bold; margin-bottom:5px;">❌ 傳統自行申報</div>
-                        年租金收入：${formatCurrency(annualRent)}<br>
-                        (扣除43%成本率)<br>
-                        <span style="color:#C53030; font-weight:bold;">隔年應繳稅金：${formatCurrency(traditionalTax)}</span>
+                        年租金：${formatCurrency(annualRent)}<br>
+                        法定免稅額：0<br>
+                        扣除43%後淨額：${formatCurrency(traditionalTaxable)}<br>
+                        <span style="color:#C53030; font-weight:bold;">應繳所得稅：${formatCurrency(traditionalTax)}</span>
                     </div>
                     <div style="background:#F0FFF4; padding:10px; border-radius:8px;">
-                        <div style="color:#276749; font-weight:bold; margin-bottom:5px;">💖 加入公益出租人</div>
-                        (扣除每月 1.5 萬免稅額)<br>
-                        (再扣除43%成本率)<br>
-                        <span style="color:#276749; font-weight:bold;">隔年應繳稅金：${formatCurrency(welfareTax)}</span>
+                        <div style="color:#276749; font-weight:bold; margin-bottom:5px;">💖 公益出租人</div>
+                        年租金：${formatCurrency(annualRent)}<br>
+                        免稅額：${formatCurrency(Math.min(rent, 15000)*12)}<br>
+                        扣除43%後淨額：${formatCurrency(welfareAnnualTaxable)}<br>
+                        <span style="color:#276749; font-weight:bold;">應繳所得稅：${formatCurrency(welfareTax)}</span>
                     </div>
                 </div>
                 <div style="text-align:center; margin-top:15px; font-size:1.1em; font-weight:bold; color:#1A365D;">
-                    💡 成為公益出租人，每年合法省下所得稅 <span style="color:#E53E3E; font-size:1.3em;">${formatCurrency(savedAmount)}</span> 元！
+                    💡 成為公益出租人，每年合法省下 <span style="color:#E53E3E; font-size:1.3em;">${formatCurrency(savedAmount)}</span> 元所得稅！<br>
+                    <span style="font-size:0.8em; color:#D69E2E;">⭐ 易丞秘訣：委託社會住宅包租代管，43% 扣除率可再升級為 60%！</span>
                 </div>
             `;
         }
@@ -888,13 +752,13 @@
         resultDiv.innerHTML = htmlStr;
     }
 
-    // --- 5. B2B 頂峰家族辦公室架構拆分精算 ---
+    // --- 5. 頂峰家族辦公室架構拆分精算 ---
     function calculateB2BOptimization() {
         const total = parseFloat(document.getElementById('b2bTotalBudget').value);
         const taxRate = parseFloat(document.getElementById('b2bTaxRate').value);
         const resultDiv = document.getElementById('b2bResult');
 
-        if (isNaN(total) || total <= 0) { alert('請輸入企業總預算！'); return; }
+        if (isNaN(total) || total <= 0) { alert('請輸入預算！'); return; }
 
         const tradIncomeTax = Math.round(total * (1 - 0.43) * taxRate * 12); 
         const tradNhiTax = Math.round(total * 0.0211 * 12); 
