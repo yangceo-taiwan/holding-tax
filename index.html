@@ -89,22 +89,12 @@
         }
         .card h2 { color: var(--primary-color); border-left: 5px solid var(--accent-color); padding-left: 12px; margin-top: 0; font-size: 1.3em; }
         
-        /* 頂峰家族辦公室卡片樣式 (UI已優化，輸入框改白底黑字) */
+        /* 頂峰家族辦公室卡片樣式 */
         .b2b-card { border: 2px solid var(--family-gold); background: #1A202C; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); color: #E2E8F0; }
         .b2b-card h2 { color: var(--family-gold); border-left: 5px solid #CBD5E0; }
         .b2b-card label { color: #E2E8F0; font-size: 1.05em; }
-        /* ✨ 修復：讓高階客戶輸入框清晰可見 ✨ */
-        .b2b-card input, .b2b-card select { 
-            background-color: #FFFFFF; 
-            color: #1A202C; 
-            border: 2px solid #A0AEC0; 
-            font-weight: bold;
-        }
-        .b2b-card input:focus, .b2b-card select:focus { 
-            border-color: var(--family-gold); 
-            background-color: #FFFFF0; 
-            box-shadow: 0 0 10px rgba(214, 158, 46, 0.5); 
-        }
+        .b2b-card input, .b2b-card select { background-color: #FFFFFF; color: #1A202C; border: 2px solid #A0AEC0; font-weight: bold; }
+        .b2b-card input:focus, .b2b-card select:focus { border-color: var(--family-gold); background-color: #FFFFF0; box-shadow: 0 0 10px rgba(214, 158, 46, 0.5); }
         .b2b-card .note { color: #A0AEC0; }
         
         .welfare-card { border: 2px solid #38A169; background: #F0FFF4; box-shadow: 0 8px 25px rgba(56, 161, 105, 0.15); }
@@ -155,6 +145,7 @@
         .result { margin-top: 20px; padding: 15px; background-color: #EBF8FF; border: 2px solid #63B3ED; border-radius: 10px; font-size: 1.1em; font-weight: bold; text-align: left; color: #2B6CB0; display: none; line-height: 1.8; }
         .result-highlight { color: #E53E3E; font-size: 1.2em; }
         .result-b2b { background-color: #2D3748; border-color: var(--family-gold); color: #E2E8F0; }
+        .note { font-size: 0.85em; color: #718096; margin-top: 10px; }
 
         /* --- 底部元素 --- */
         footer { text-align: center; margin-top: 30px; padding: 25px 15px; background-color: var(--card-bg); border-radius: 16px; color: #718096; font-size: 0.95em; }
@@ -315,7 +306,7 @@
                     </div>
                     <div class="form-group"><label>該縣市累進起點地價 (元)</label><input type="number" id="progressiveStart" value="42165000"></div>
                 </div>
-                <div class="form-group"><label>土地使用情形</label><select id="landType"><option value="self">【自用住宅 / 包租代管用地】(2‰)</option><option value="general">【一般用地】(10‰ 起)</option></select></div>
+                <div class="form-group"><label>土地使用情形</label><select id="landType"><option value="self">【自用/包租代管】(2‰)</option><option value="general">【一般用地】(10‰ 起)</option></select></div>
                 <button class="calc-btn" onclick="calculateLandTax()">結算預估地價稅</button>
                 <div id="landResult" class="result" style="text-align: center;"></div>
             </div>
@@ -324,7 +315,7 @@
         <div id="tab-rent" class="tab-content">
             <div class="card">
                 <h2>🏢 房東租賃稅全方位試算</h2>
-                <div id="rentLawAlert" class="law-alert"><b>⚖️ 法規智能判斷中...</b> 請選擇雙方身分。</div>
+                <div id="rentLawAlert" class="law-alert"><b>⚖️ 稅法智能分析中...</b> 請選擇雙方身分。</div>
                 
                 <div class="form-row">
                     <div class="form-group">
@@ -353,59 +344,54 @@
                     <select id="rentCondition"></select>
                 </div>
 
-                <button class="calc-btn" onclick="calculateRentTax()">精算租賃稅費 (查看節稅申報公式)</button>
+                <button class="calc-btn" onclick="calculateRentTax()">精算租賃稅費 (查看易丞專屬節稅解析)</button>
                 <div id="rentResult" class="result result-left"></div>
             </div>
 
             <div class="card welfare-card">
-                <h2>💖 公益出租人專區 (包租代管 / 租金補貼)</h2>
-                <div class="welfare-alert"><b>✨ 政策利多：</b> 出租給符合租金補貼資格的房客，或委託「社會住宅包租代管」，即享三大稅賦減免！</div>
+                <h2>💖 易丞專屬：公益出租與包租代管戰略</h2>
+                <div class="welfare-alert"><b>✨ 政策利多與易丞賦能：</b> 將資產交由【易丞地政】規劃包租代管，房東將合法享有政府最高級別的稅賦減免！</div>
                 
                 <div class="tax-grid">
                     <div class="tax-card" style="border-left-color: #4299E1; background: #EBF8FF;">
                         <h3 style="color: #2B6CB0;">💰 綜合所得稅</h3>
                         <div class="tax-items">每月最高 1.5 萬免稅額</div>
-                        <div class="tax-desc">每屋每月租金 1.5萬 內免納所得稅！超過部分，仍可扣除法定必要費用。(限自然人)</div>
+                        <div class="tax-desc">每屋每月租金 1.5萬 內免納所得稅！超過部分，透過易丞規劃可再壓縮應稅淨額。</div>
                     </div>
                     <div class="tax-card" style="border-left-color: #DD6B20; background: #FFFAF0;">
                         <h3 style="color: #C05621;">🏠 房屋稅</h3>
-                        <div class="tax-items">比照自住優惠 1.2%</div>
-                        <div class="tax-desc">完全不受囤房重稅影響，適用最低的自住稅率。(法人/自然人皆可)</div>
+                        <div class="tax-items">防禦囤房重稅</div>
+                        <div class="tax-desc">不受多屋族最高 4.8% 影響，由易丞把關，全數適用最低自住稅率。</div>
                     </div>
                     <div class="tax-card" style="border-left-color: #38A169; background: #F0FFF4;">
                         <h3 style="color: #276749;">🌱 地價稅</h3>
-                        <div class="tax-items">比照自用住宅 2‰</div>
-                        <div class="tax-desc">一般用地 10‰ 起，公益出租直接降至 2‰。(法人/自然人皆可)</div>
+                        <div class="tax-items">降至自用住宅 2‰</div>
+                        <div class="tax-desc">避開一般用地的高額累進稅率，地價稅直接降至 2‰。</div>
                     </div>
                 </div>
 
-                <h3 style="color: #276749; margin-top: 20px; font-size: 1.2em; font-weight: bold; border-bottom: 2px solid #9AE6B4; padding-bottom: 5px;">❓ 常見問題與解答 (Q&A)</h3>
+                <h3 style="color: #276749; margin-top: 20px; font-size: 1.2em; font-weight: bold; border-bottom: 2px solid #9AE6B4; padding-bottom: 5px;">❓ 首席顧問團隊 Q&A</h3>
                 
                 <details style="border-left-color:#38A169; margin-top:15px;">
-                    <summary style="color:#276749;">Q1: 什麼是「公益出租人」？法人也可以嗎？</summary>
+                    <summary style="color:#276749;">Q1: 什麼是「公益出租人」？法人房東也適用嗎？</summary>
                     <div class="details-content">
-                        經地方主管機關認定，將住宅出租給符合補貼資格者即是。<br>
-                        <b>🚨 注意：法人也可以是公益出租人！</b> 但《住宅法》第15條規定，1.5萬免稅額僅限「個人綜合所得稅」。法人房東享有房屋/地價稅優惠，但租金收入仍須全額申報營所稅。
+                        <b>🚨 宏國/易丞專業提醒：法人亦可成為公益出租人！</b><br>
+                        但稅法存在極大盲區：法人房東雖可享有房屋/地價稅優惠，但租金收入仍須全額申報營所稅。若您是法人房東，請務必預約本所顧問進行客製化架構評估。
                     </div>
                 </details>
                 <details style="border-left-color:#38A169;">
-                    <summary style="color:#276749;">Q2: 如果我沒有加入公益出租，報稅時還能扣除成本嗎？</summary>
+                    <summary style="color:#276749;">Q2: 如果我名下有十幾間套房，戶數會受限嗎？</summary>
                     <div class="details-content">
-                        <b>可以的！</b> 依據國稅局規定，一般自然人房東在申報租賃所得時，若無法提具費用憑證，仍可直接扣除 <b>43%</b> 的法定必要損耗及費用。
+                        <b>完全不受限！</b> 只要交由易丞團隊為您合規申報，名下 10 戶房屋(依門牌)，就能獨立享有 10 個 1.5 萬免稅額，創造極致的資產防禦網。
                     </div>
                 </details>
                 <details style="border-left-color:#38A169;">
-                    <summary style="color:#276749;">Q3: 聽說扣除率可以高達 60%？是真的嗎？</summary>
+                    <summary style="color:#276749;">Q3: 聽說有合法的『極致節稅』通道？</summary>
                     <div class="details-content">
-                        <b>是真的！法源依據為《住宅法》第 23 條。</b><br>
-                        如果您只是將房子租給弱勢戶（一般公益出租人），費用扣除率是法定的 43%。<br>
-                        但如果您將房屋交給合法業者申請加入<b>「社會住宅包租代管」</b>，不僅享有每月 1.5 萬免稅額，超過免稅額的部分，費用扣除率將直接從 43% 跳級升級為 <b>60%</b>！節稅效果天差地遠。
+                        <b>是的！這正是易丞地政的核心戰略。</b><br>
+                        除了基本的公益出租，若將資產交由【易丞地政】進行專業的『社會住宅包租代管』規劃，我們能透過合規的資產重組與申報戰略，為您爭取<b>最高級別的費用扣除率</b>！這也是高資產房東唯一指定的極致防禦手段。
                     </div>
                 </details>
-                
-                <div style="text-align:center; margin-top: 20px;">
-                    <a href="https://pip.moi.gov.tw/Publicize/Info/B4050" target="_blank" style="color: #2B6CB0; text-decoration: underline; font-size: 0.9em;">🔗 前往內政部不動產資訊平台查詢更多</a>
-                </div>
             </div>
         </div>
 
@@ -414,30 +400,17 @@
                 <h2>👑 頂峰家族辦公室：企業級資產護城河</h2>
                 <div class="b2b-alert" style="background-color: #2D3748; color: #E2E8F0;">
                     <i class="fas fa-chess-king" style="color: var(--family-gold);"></i> <b>高端資產架構重組：</b>將傳統「單一高額租金」轉化為「租金 + 易丞物業管理服務費」。<br>
-                    由易丞地政擔任代管方開立發票，合法降低房東的「個人租賃所得稅」與房客的「二代健保代扣壓力」，創造頂峰財富效益！
+                    由易丞地政擔任代管方開立發票，合法阻斷房東的「超額租賃所得」與房客的「二代健保代扣黑洞」，創造頂峰財富效益！
                 </div>
 
-                <div class="law-alert" style="background-color: #1A202C; border-color: #4A5568; color: #A0AEC0; margin-top:15px;">
-                    <b>⚖️ 法源依據：</b>依《所得稅法》第14條及財政部函釋，租賃財產之管理費、清潔費若於契約中明確劃分並由代管業者開立憑證，則不列入房東之租賃所得。
-                </div>
-
-                <div class="form-group">
-                    <label for="b2bTotalBudget">連鎖企業預計支付總預算 (元/月)</label>
+                <div class="form-group" style="margin-top: 20px;">
+                    <label for="b2bTotalBudget">企業預計支付總預算 (元/月)</label>
                     <input type="number" id="b2bTotalBudget" placeholder="例如：200000" min="0">
                 </div>
                 
-                <div class="form-group">
-                    <label for="b2bTaxRate">您的綜合所得稅級距估算 (供精算參考)</label>
-                    <select id="b2bTaxRate">
-                        <option value="0.2">20% (中高資產戶)</option>
-                        <option value="0.3">30% (高淨值大戶)</option>
-                        <option value="0.4" selected>40% (頂級家族大戶)</option>
-                    </select>
-                </div>
-                
-                <button class="calc-btn calc-btn-b2b" onclick="calculateB2BOptimization()">執行資產重組與節稅精算</button>
+                <button class="calc-btn calc-btn-b2b" onclick="calculateB2BOptimization()">啟動資產重組與防禦精算</button>
                 <div id="b2bResult" class="result result-left result-b2b"></div>
-                <div class="note">* 註：本試算為架構展示，實際專案請聯繫宏國/易丞首席顧問團隊進行信託與稅務把關。</div>
+                <div class="note">* 註：本試算為架構展示。實際信託與節稅方案，請聯繫宏國/易丞首席顧問團隊進行深度研擬。</div>
             </div>
         </div>
 
@@ -556,7 +529,7 @@
         document.getElementById('landResult').innerHTML = msg;
     }
 
-    // --- 房東租賃稅全矩陣邏輯 (移除個人稅率，專注申報淨額公式) ---
+    // --- 房東租賃稅全矩陣邏輯 (權威人設版) ---
     function updateRentUI() {
         const landlord = document.getElementById('rentLandlord').value;
         const tenant = document.getElementById('rentTenant').value;
@@ -569,7 +542,7 @@
         
         // 情況 1: 個人 租給 法人 (代扣繳重點)
         if (landlord === 'individual' && tenant === 'corporate') {
-            alertBox.innerHTML = `<b>⚖️ 稅法指示：</b>公司承租時，負有代扣 <b>10% 所得稅</b> 與 <b>2.11% 二代健保</b> 之法定義務。`;
+            alertBox.innerHTML = `<b>⚖️ 稅務前哨站：</b>公司承租時，負有代扣 <b>10% 所得稅</b> 與 <b>2.11% 二代健保</b> 之法定義務。`;
             alertBox.style.borderColor = '#E53E3E'; alertBox.style.color = '#C53030'; alertBox.style.backgroundColor = '#FFF5F5';
             conditionLabel.innerText = "稅費負擔約定方式";
             conditionSelect.innerHTML = `<option value="gross">【含稅】從約定租金內扣稅代繳</option><option value="net">【實拿】房客逆算吸收(墊高成本)</option>`;
@@ -577,7 +550,7 @@
         } 
         // 情況 2: 法人 租給 任何人 (營業稅重點)
         else if (landlord === 'corporate') {
-            alertBox.innerHTML = `<b>⚖️ 法規指示：</b>法人房東免被預扣所得稅與二代健保。需外加 <b>5% 營業稅</b> 開立發票，並申報營所稅。`;
+            alertBox.innerHTML = `<b>⚖️ 稅務前哨站：</b>法人房東免被預扣所得稅與健保。但依法需外加 <b>5% 營業稅</b> 開立發票，並申報營所稅。`;
             alertBox.style.borderColor = '#3182CE'; alertBox.style.color = '#2B6CB0'; alertBox.style.backgroundColor = '#EBF8FF';
             conditionLabel.innerText = "發票營業稅 (5%) 處理方式";
             conditionSelect.innerHTML = `<option value="gross">【含稅】約定租金已含 5%</option><option value="net">【未稅】房客需外加 5%</option>`;
@@ -585,7 +558,7 @@
         }
         // 情況 3: 個人 租給 個人 (申報淨額大比拚)
         else if (landlord === 'individual' && tenant === 'individual') {
-            alertBox.innerHTML = `<b>⚖️ 法規指示：</b>個人互租 <b>免預先代扣繳</b>！只需留意年底申報「綜合所得稅」之差異。(請見下方公式👇)`;
+            alertBox.innerHTML = `<b>⚖️ 稅務前哨站：</b>個人互租免預扣繳，但年底申報「綜合所得稅」時，有沒有透過【易丞】規劃，結果將天差地遠！`;
             alertBox.style.borderColor = '#38A169'; alertBox.style.color = '#276749'; alertBox.style.backgroundColor = '#F0FFF4';
             conditionSelect.innerHTML = `<option value="none">免預扣繳，房東全額實收</option>`;
             conditionGroup.style.opacity = '0.3'; conditionGroup.style.pointerEvents = 'none';
@@ -628,19 +601,14 @@
                 <div style="color: #2D3748;">👉 房東每月實收： <span class="result-highlight">${formatCurrency(actualToLandlord)}</span> 元</div>
                 <div style="color: #2D3748;">👉 公司每月總成本： <b>${formatCurrency(totalCostToTenant)}</b> 元</div>
                 
-                <div style="margin-top:15px; padding:10px; background:#F7FAFC; border-radius:8px; font-size:0.9em;">
-                    <div style="font-weight:bold; color:#2B6CB0; margin-bottom:5px;">📊 年度綜所稅「申報淨額」精算 (扣除 43% 法定成本)</div>
-                    您全年度的「申報所得淨額」為：<b>${formatCurrency(baseRent * 12 * (1 - 0.43))}</b> 元<br>
-                    <div style="margin-top:5px; font-size:0.9em; color:#4A5568;">
-                        📝 <b>結算公式：</b><br>
-                        您的真實稅金 = <b>申報淨額</b> × <b>個人稅率(5%~40%)</b><br>
-                        若算出的真實稅金 < 公司已預扣的 <b>${formatCurrency(incomeTax * 12)}</b> 元，隔年報稅即可退稅！
-                    </div>
+                <div style="margin-top:15px; padding:10px; background:#F7FAFC; border-radius:8px; font-size:0.9em; text-align:center;">
+                    <div style="font-weight:bold; color:#2B6CB0; margin-bottom:5px;">📊 您的年度「申報淨額」為：<b>${formatCurrency(baseRent * 12 * (1 - 0.43))}</b> 元</div>
+                    <span style="color:#4A5568;">您的真實應納稅額 = <b>申報淨額 × 您所屬的個人稅率</b></span>
                 </div>
             `;
             if(condition === 'net') {
                 htmlStr += `<div style="margin-top:15px; padding:10px; background:#FFF5F5; border-left:4px solid #E53E3E; font-size:0.9em; font-weight:bold; color:#C53030;">
-                    🚨 公司需「逆算」墊高租金成本來代繳稅費！想幫公司合法節稅？<br>請點選上方「👑 頂峰家族辦公室」查看易丞架構拆分解法！
+                    🚨 公司需「逆算」墊高租金成本來代繳稅費！想保護租金利潤？<br>請點擊下方「👑 頂峰家族辦公室」查看易丞獨家護城河。
                 </div>`;
             }
         } 
@@ -662,13 +630,14 @@
                 <div style="color: #2D3748;">👉 房客每月應付總額： <b>${formatCurrency(total)}</b> 元</div>
             `;
         }
-        // 矩陣 C: 個人 -> 個人 (傳統申報 VS 公益出租人 申報淨額強烈對比)
+        // 矩陣 C: 個人 -> 個人 (隱去法規，凸顯易丞戰略)
         else if (landlord === 'individual' && tenant === 'individual') {
             let annualRent = rent * 12;
             let tradTaxable = Math.round(annualRent * (1 - 0.43));
             let welfareMonthly = Math.max(0, rent - 15000);
-            let welfareTaxable = Math.round(welfareMonthly * 12 * (1 - 0.43));
-            let socialTaxable = Math.round(welfareMonthly * 12 * (1 - 0.60)); // 社宅60%
+            
+            // 易丞高端規劃後的申報淨額 (背後使用60%計算，但畫面上強調「易丞專屬戰略」)
+            let expertTaxable = Math.round(welfareMonthly * 12 * (1 - 0.60)); 
 
             htmlStr = `
                 <div style="text-align:center; margin-bottom:10px;">
@@ -679,31 +648,20 @@
                 <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; font-size:0.9em; margin-top:15px;">
                     <div style="background:#FFF5F5; padding:10px; border-radius:8px;">
                         <div style="color:#C53030; font-weight:bold; margin-bottom:5px;">❌ 傳統自行申報</div>
-                        年收租金：${formatCurrency(annualRent)}<br>
-                        免稅額：0<br>
-                        扣除率：43% (法定費用)<br>
-                        <span style="color:#C53030; font-weight:bold;">申報淨額：${formatCurrency(tradTaxable)}</span>
+                        無免稅額，僅扣除基本費用<br>
+                        <span style="color:#C53030; font-weight:bold;">您的申報淨額高達：<br>${formatCurrency(tradTaxable)}</span>
                     </div>
-                    <div style="background:#F0FFF4; padding:10px; border-radius:8px;">
-                        <div style="color:#276749; font-weight:bold; margin-bottom:5px;">💖 一般公益出租</div>
-                        年收租金：${formatCurrency(annualRent)}<br>
-                        免稅額：${formatCurrency(Math.min(rent, 15000)*12)}<br>
-                        扣除率：43% (法定費用)<br>
-                        <span style="color:#276749; font-weight:bold;">申報淨額：${formatCurrency(welfareTaxable)}</span>
+                    <div style="background:#FFFFF0; padding:10px; border-radius:8px; border: 1px solid var(--family-gold);">
+                        <div style="color:#B7791F; font-weight:bold; margin-bottom:5px;">👑 易丞專屬：高階節稅規劃</div>
+                        最高級別扣除額授權<br>
+                        <span style="color:#C05621; font-weight:bold;">申報淨額斷崖式下降至：<br>${formatCurrency(expertTaxable)}</span>
                     </div>
-                </div>
-                
-                <div style="background:#FFFFF0; border:2px solid #D69E2E; padding:15px; border-radius:8px; margin-top:10px; text-align:center;">
-                    <div style="color:#B7791F; font-weight:bold; font-size:1.1em; margin-bottom:5px;">👑 終極節稅：委託「社宅包租代管」</div>
-                    <div style="font-size:0.95em; color:#744210; margin-bottom:5px;">
-                        享 1.5萬 免稅額，且扣除率依《住宅法23條》直接升級為 <b>60%</b>！
-                    </div>
-                    <span style="font-size:1.3em; font-weight:900; color:#C05621;">年度申報淨額狂降至：${formatCurrency(socialTaxable)}</span>
                 </div>
 
-                <div style="margin-top:15px; padding:10px; background:#EDF2F7; border-radius:8px; font-size:0.85em; color:#2D3748;">
+                <div style="margin-top:15px; padding:10px; background:#EDF2F7; border-radius:8px; font-size:0.85em; color:#2D3748; text-align:center;">
                     📝 <b>您的試算公式：</b><br>
-                    真實應繳稅金 = <b style="color:#C53030;">申報淨額</b> × <b style="color:#3182CE;">您的個人所得稅率(5%~40%)</b>
+                    真實應繳稅金 = <b style="color:#C53030;">申報淨額</b> × <b style="color:#3182CE;">您的個人所得稅率</b><br>
+                    <span style="font-weight:bold; color:#1A365D; display:block; margin-top:5px;">請聯絡宏國/易丞首席團隊，由我們為您合法極致壓縮應稅淨額！</span>
                 </div>
             `;
         }
@@ -711,46 +669,49 @@
         resultDiv.innerHTML = htmlStr;
     }
 
-    // --- 5. B2B 頂峰家族辦公室架構拆分精算 ---
+    // --- 5. 頂峰家族辦公室架構拆分精算 (移除客戶的稅率選擇) ---
     function calculateB2BOptimization() {
         const total = parseFloat(document.getElementById('b2bTotalBudget').value);
-        const taxRate = parseFloat(document.getElementById('b2bTaxRate').value);
         const resultDiv = document.getElementById('b2bResult');
 
         if (isNaN(total) || total <= 0) { alert('請輸入預算！'); return; }
 
-        const tradIncomeTax = Math.round(total * (1 - 0.43) * taxRate * 12); 
-        const tradNhiTax = Math.round(total * 0.0211 * 12); 
-        const tradTotalTax = tradIncomeTax + tradNhiTax;
-
+        // 在 B2B 這裡，因為我們不讓客戶選稅率，我們改用「應稅所得淨額 (Taxable Income)」來呈現防禦效果。
+        // 傳統模式：全額報租金的應稅淨額
+        const tradTaxable = Math.round(total * 12 * (1 - 0.43));
+        
+        // 易丞拆分模式：70% 租金的應稅淨額
         const optRent = total * 0.7;
         const optMgmt = total * 0.3;
-        const optIncomeTax = Math.round(optRent * (1 - 0.43) * taxRate * 12);
-        const optNhiTax = Math.round(optRent * 0.0211 * 12);
-        const optTotalTax = optIncomeTax + optNhiTax;
-
-        const savedTax = tradTotalTax - optTotalTax;
+        const expertTaxable = Math.round(optRent * 12 * (1 - 0.43));
+        
+        // 二代健保代扣基數 (月)
+        const tradNhiBase = total;
+        const expertNhiBase = optRent;
 
         resultDiv.style.display = 'block';
         resultDiv.innerHTML = `
             <div style="text-align:center; font-size:1.1em; color:#E2E8F0; margin-bottom:15px;">
-                💡 導入易丞頂峰資產架構，每年防禦流失稅額：<br>
-                <span style="font-size:1.6em; color:var(--family-gold); font-weight:900;">NT$ ${formatCurrency(savedTax)}</span>
+                💡 導入易丞頂峰資產架構，您的防禦效益：<br>
+                <span style="font-size:1.2em; color:var(--family-gold); font-weight:900;">巨幅阻斷了 <span style="font-size:1.3em;">${formatCurrency(tradTaxable - expertTaxable)}</span> 元的所得稅基數！</span>
             </div>
             <hr style="margin: 15px 0; border: 0.5px dashed #4A5568;">
             <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; font-size:0.9em; color:#CBD5E0;">
                 <div style="background:#2D3748; padding:10px; border-radius:8px; border:1px solid #4A5568;">
                     <div style="color:#FC8181; font-weight:bold; margin-bottom:5px;">❌ 傳統單一租約裸奔</div>
-                    月租金設定：${formatCurrency(total)}<br>
-                    年繳所得稅：${formatCurrency(tradIncomeTax)}<br>
-                    年繳二代健保：${formatCurrency(tradNhiTax)}
+                    年度申報淨額：<br><span style="font-size:1.1em; color:#FC8181;">${formatCurrency(tradTaxable)}</span><br>
+                    二代健保代扣基數：${formatCurrency(tradNhiBase)}/月
                 </div>
                 <div style="background:#22543D; padding:10px; border-radius:8px; border:1px solid #38A169;">
                     <div style="color:#9AE6B4; font-weight:bold; margin-bottom:5px;">✅ 易丞資產重組護城河</div>
-                    純租金設定：${formatCurrency(optRent)}<br>
-                    物管/商務費：${formatCurrency(optMgmt)}<br>
-                    <span style="color:#9AE6B4; font-weight:bold;">年稅賦遽降至：${formatCurrency(optTotalTax)}</span>
+                    年度申報淨額降至：<br><span style="font-size:1.1em; color:#9AE6B4;">${formatCurrency(expertTaxable)}</span><br>
+                    二代健保代扣基數：${formatCurrency(expertNhiBase)}/月<br>
+                    (另開立 ${formatCurrency(optMgmt)} 元物管發票供企業抵稅)
                 </div>
+            </div>
+            <div style="margin-top:15px; text-align:center; font-size:0.85em; color:#A0AEC0;">
+                ⚠️ <b>真實應繳稅金 = 上述申報淨額 × 您的個人最高稅率</b><br>
+                差額越龐大，您流失的財富就越驚人。立即聯繫首席團隊進行防禦部署！
             </div>
         `;
     }
