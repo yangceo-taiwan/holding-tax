@@ -33,6 +33,7 @@
             --line-green-hover: #05b34c;
             --tab-bg: #EDF2F7;
             --b2b-color: #2C5282;
+            --welfare-color: #276749;
         }
 
         /* 基礎重置與排版 */
@@ -90,8 +91,12 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #E2E8F0;
         }
         .card h2 { color: var(--primary-color); border-left: 5px solid var(--accent-color); padding-left: 12px; margin-top: 0; font-size: 1.3em; }
+        
         .b2b-card { border: 2px solid #2B6CB0; background: #F7FAFC; box-shadow: 0 8px 25px rgba(43, 108, 176, 0.15); }
         .b2b-card h2 { color: #1A365D; border-left: 5px solid #2B6CB0; }
+        
+        .welfare-card { border: 2px solid #38A169; background: #F0FFF4; box-shadow: 0 8px 25px rgba(56, 161, 105, 0.15); }
+        .welfare-card h2 { color: var(--welfare-color); border-left: 5px solid #38A169; }
 
         /* --- 稅務三階段卡片 --- */
         .tax-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 25px; }
@@ -124,6 +129,8 @@
         .info-alert { background-color: #FEFCBF; padding: 15px; border-radius: 8px; margin: 0 0 20px 0; font-size: 0.95em; border: 1px dashed #D69E2E; color: #744210; }
         .law-alert { background-color: #E6FFFA; padding: 15px; border-radius: 8px; margin: 0 0 20px 0; font-size: 0.9em; border: 1px solid #38B2AC; color: #234E52; transition: all 0.3s ease; }
         .b2b-alert { background-color: #EBF4FF; padding: 15px; border-radius: 8px; margin: 0 0 20px 0; font-size: 0.95em; border: 1px solid #2B6CB0; color: #1A365D; font-weight: bold; }
+        .welfare-alert { background-color: #FFFFFF; padding: 15px; border-radius: 8px; margin: 0 0 20px 0; font-size: 0.95em; border: 1px solid #9AE6B4; color: #276749; font-weight: bold; }
+        
         .form-group { margin-bottom: 15px; transition: all 0.3s ease; }
         .form-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
         label { display: block; font-weight: bold; margin-bottom: 8px; color: var(--primary-color); font-size: 0.95em; }
@@ -146,8 +153,6 @@
         .btn-review { background: linear-gradient(135deg, var(--accent-color) 0%, #B7791F 100%); box-shadow: 0 4px 15px rgba(214, 158, 46, 0.3); }
         .btn-line { background: linear-gradient(135deg, #06c755 0%, #05a546 100%); box-shadow: 0 4px 15px rgba(6, 199, 85, 0.3); }
         .btn-action:hover { transform: translateY(-2px); filter: brightness(1.05); }
-
-        /* --- SSO 門禁按鈕專用樣式 --- */
         .btn-line-solid { background-color: var(--line-green); color: white; transition: background-color 0.3s; border: none; }
         .btn-line-solid:hover { background-color: var(--line-green-hover); }
 
@@ -156,12 +161,6 @@
             .tab-btn { padding: 10px 15px; font-size: 0.95em; }
             .bottom-bar { padding: 12px 15px; padding-bottom: calc(12px + env(safe-area-inset-bottom)); }
             .btn-action { font-size: 1em; padding: 10px 0; }
-        }
-
-        /* --- 列印優化與防護 --- */
-        @media print {
-            #nexus-auth-gate { display: none !important; }
-            #main-content { display: block !important; }
         }
     </style>
 </head>
@@ -245,39 +244,17 @@
                         觀看專家影音完整解析
                     </a>
                 </div>
-
                 <details>
                     <summary>💡 房屋稅和地價稅的「自用」都要設戶籍嗎？</summary>
-                    <div class="details-content">
-                        沒錯！兩者都嚴格要求設立戶籍。<br>
-                        • <b>房屋稅：</b>必須是所有人或配偶、<b>直系親屬</b>辦竣戶籍登記。<br>
-                        • <b>地價稅：</b>同樣要求所有權人或配偶、<b>直系親屬</b>設戶籍，且兩者皆不可有出租或營業情形。
-                    </div>
+                    <div class="details-content">沒錯！兩者都嚴格要求設立戶籍。<br>• <b>房屋稅：</b>必須是所有人或配偶、<b>直系親屬</b>辦竣戶籍登記。<br>• <b>地價稅：</b>同樣要求所有權人或配偶、<b>直系親屬</b>設戶籍，且兩者皆不可有出租或營業情形。</div>
                 </details>
-                
                 <details>
                     <summary>💡 兩間以上的房子，都能申請「自用地價稅」嗎？</summary>
-                    <div class="details-content">
-                        地價稅規定本人、配偶及未成年子女原則上以「一處」為限。<br><br>
-                        <b>✨ 易丞專業破解秘訣：</b><br>
-                        若有第二間房，可利用「成年子女」、「父母」或「祖父母」等其他直系親屬去設立戶籍，只要符合面積限制，第二間也能享有千分之二的極優惠稅率！
-                    </div>
+                    <div class="details-content">地價稅規定本人、配偶及未成年子女原則上以「一處」為限。<br><br><b>✨ 易丞專業破解秘訣：</b><br>若有第二間房，可利用「成年子女」、「父母」或「祖父母」等其他直系親屬去設立戶籍，只要符合面積限制，第二間也能享有千分之二的極優惠稅率！</div>
                 </details>
-
                 <details>
                     <summary>💡 什麼是「全國總歸戶」？囤房稅多高？</summary>
-                    <div class="details-content">
-                        現在是「全台灣」的應稅房屋合併計算戶數！針對「非自住住家」，稅率最高可達 4.8%。<br><br>
-                        🎁 但若您本人、配偶及未成年子女全台灣只有一間房子且供自住（一定現值下），稅率會降至 1.0% 的超優惠大紅包！
-                    </div>
-                </details>
-
-                <details>
-                    <summary>💡 想要節稅，什麼時候申請才來得及？</summary>
-                    <div class="details-content">
-                        • <b>地價稅：</b>每年 11/1 開徵，必須在 <b>9/22</b> 前提出申請。<br>
-                        • <b>房屋稅：</b>每年 5/1 開徵，使用情形變更必須在 <b>3/22</b> 前申報。
-                    </div>
+                    <div class="details-content">現在是「全台灣」的應稅房屋合併計算戶數！針對「非自住住家」，稅率最高可達 4.8%。<br><br>🎁 但若您本人、配偶及未成年子女全台灣只有一間房子且供自住（一定現值下），稅率會降至 1.0% 的超優惠大紅包！</div>
                 </details>
             </div>
         </div>
@@ -289,12 +266,10 @@
                     <b>⚠️ 囤房稅豁免專區：</b><br>
                     「繼承共有」、「商用營業」、「包租代管/公益出租」及「自住」，都<b>不會</b>被算進 2.0%~4.8% 囤房重稅！加入包租代管更享 <b>1.2%</b> 自住同等優惠！
                 </div>
-
                 <div class="form-group">
                     <label for="houseValue">房屋現值 (元)</label>
                     <input type="number" id="houseValue" placeholder="例如：1000000" min="0">
                 </div>
-                
                 <div class="form-group">
                     <label for="houseType">房屋使用情形 (智慧分類)</label>
                     <select id="houseType">
@@ -315,9 +290,9 @@
                         </optgroup>
                     </select>
                 </div>
-                
                 <button class="calc-btn" onclick="calculateHouseTax()">結算預估房屋稅</button>
                 <div id="houseResult" class="result"></div>
+                <div class="note">* 註：實際稅率依各縣市政府當年訂定自治條例為準，本試算採參考稅率估算。</div>
             </div>
         </div>
 
@@ -350,7 +325,7 @@
                             <option value="0.048">【建商待售】超過5年 (4.8%)</option>
                         </optgroup>
                         <optgroup label="📈 非自住 - 其他 (囤房稅)">
-                            <option value="0.026">【囤房稅】2戶以內 (2.6%)</option>
+                            <option value="0.026">【囤房稅】2戶以內 (2.6%) *註:113/7~114/6為3.2%</option>
                             <option value="0.038">【囤房稅】3~4戶 (3.8%)</option>
                             <option value="0.042">【囤房稅】5~6戶 (4.2%)</option>
                             <option value="0.048">【囤房稅】7戶以上 (4.8%)</option>
@@ -369,7 +344,6 @@
         <div id="tab-land" class="tab-content">
             <div class="card">
                 <h2>🌱 地價稅智慧試算</h2>
-                
                 <div class="form-row">
                     <div class="form-group">
                         <label>土地面積 (平方公尺)</label>
@@ -380,12 +354,10 @@
                         <input type="number" id="landUnitPrice" placeholder="輸入單價" min="0" oninput="updateLandTotal()">
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label>申報地價總額 (元) <span style="font-weight:normal; font-size:13px;">(可由上方自動計算)</span></label>
                     <input type="number" id="landValue" placeholder="例如：500000" min="0">
                 </div>
-
                 <div class="form-row">
                     <div class="form-group">
                         <label>選擇縣市 (帶入最新起點)</label>
@@ -404,7 +376,6 @@
                         <input type="number" id="progressiveStart" value="42165000">
                     </div>
                 </div>
-                
                 <div class="form-group">
                     <label>土地使用情形</label>
                     <select id="landType">
@@ -412,7 +383,6 @@
                         <option value="general">【一般用地】(千分之10 起跳 ~ 最高千分之55)</option>
                     </select>
                 </div>
-                
                 <button class="calc-btn" onclick="calculateLandTax()">結算預估地價稅</button>
                 <div id="landResult" class="result"></div>
                 <div class="note">* 註：符合自用及包租代管需事前申請！超過累進起點將啟動階梯式重稅。</div>
@@ -456,6 +426,66 @@
 
                 <button class="calc-btn" onclick="calculateRentTax()">精算租賃稅費</button>
                 <div id="rentResult" class="result result-left"></div>
+            </div>
+
+            <div class="card welfare-card">
+                <h2>💖 公益出租人專區 (包租代管 / 租金補貼)</h2>
+                <div class="welfare-alert">
+                    <b>✨ 政策利多：</b> 只要將房屋出租給符合「租金補貼」資格的房客，或委託加入「社會住宅包租代管」，房東即可自動成為「公益出租人」，享有三大稅賦超強減免！(資料來源: 內政部)
+                </div>
+                
+                <div class="tax-grid">
+                    <div class="tax-card" style="border-left-color: #4299E1; background: #EBF8FF;">
+                        <h3 style="color: #2B6CB0;">💰 綜合所得稅</h3>
+                        <div class="tax-items">每月最高 1.5 萬免稅額</div>
+                        <div class="tax-desc">每屋(依門牌)每月租金收入1.5萬內免納所得稅！超過部分還可扣除法定必要費用。</div>
+                    </div>
+                    <div class="tax-card" style="border-left-color: #DD6B20; background: #FFFAF0;">
+                        <h3 style="color: #C05621;">🏠 房屋稅</h3>
+                        <div class="tax-items">比照自住優惠 1.2%</div>
+                        <div class="tax-desc">完全不受囤房重稅(2.0%~4.8%)影響，不論名下有幾戶，通通適用最低的自住稅率。</div>
+                    </div>
+                    <div class="tax-card" style="border-left-color: #38A169; background: #F0FFF4;">
+                        <h3 style="color: #276749;">🌱 地價稅</h3>
+                        <div class="tax-items">比照自用住宅 2‰</div>
+                        <div class="tax-desc">一般用地為 10‰ 起跳，公益出租直接降至 2‰，為您省下至少 5 倍的地價稅金！</div>
+                    </div>
+                </div>
+
+                <h3 style="color: #276749; margin-top: 20px; font-size: 1.2em; font-weight: bold; border-bottom: 2px solid #9AE6B4; padding-bottom: 5px;">❓ 常見問題與解答 (Q&A)</h3>
+                
+                <details style="border-left-color:#38A169; margin-top:15px;">
+                    <summary style="color:#276749;">Q1: 什麼是「公益出租人」？</summary>
+                    <div class="details-content">
+                        只要房屋所有權人，將住宅出租給符合「租金補貼」申請資格的房客（如一般補貼戶、中低收入戶等），經直轄市、縣(市)主管機關認定後，即為公益出租人。<b>特別注意：法人也可以是公益出租人！</b>
+                    </div>
+                </details>
+
+                <details style="border-left-color:#38A169;">
+                    <summary style="color:#276749;">Q2: 我需要自己主動去申請這些優惠嗎？</summary>
+                    <div class="details-content">
+                        <b>綜合所得稅與房屋稅：</b> 通常免主動申請！房客申請租金補貼核准後，政府會將清冊直接交給國稅局與地方稅務局，自動為您套用優惠。<br>
+                        <b>地價稅：</b> 部分縣市（依地方政府自治條例）可能需要房東主動於地價稅開徵 40 天前（9/22前）提出申請。建議交由易丞地政為您全面把關！
+                    </div>
+                </details>
+
+                <details style="border-left-color:#38A169;">
+                    <summary style="color:#276749;">Q3: 如果我有好幾間房子出租，戶數有限制嗎？</summary>
+                    <div class="details-content">
+                        <b>完全沒有戶數限制！</b> 只要符合公益出租人條件，名下就算有 10 戶房屋分別出租給符合資格的房客，每一戶（以獨立門牌為準）都能享有每月 1.5 萬免稅額，且每一戶的房屋稅、地價稅通通享有自住優惠。
+                    </div>
+                </details>
+                
+                <details style="border-left-color:#38A169;">
+                    <summary style="color:#276749;">Q4: 房子是老公的名字，可以用老婆的名字簽約出租嗎？</summary>
+                    <div class="details-content">
+                        <b>不行！</b> 租賃契約上的「出租人」必須是「房屋所有權人」，才能享有上述所有稅賦優惠。如果是共有房屋，強烈建議將所有共有人都列名為出租人，避免權益受損。
+                    </div>
+                </details>
+                
+                <div style="text-align:center; margin-top: 20px;">
+                    <a href="https://pip.moi.gov.tw/Publicize/Info/B4050" target="_blank" style="color: #2B6CB0; text-decoration: underline; font-size: 0.9em;">🔗 前往內政部不動產資訊平台查詢更多</a>
+                </div>
             </div>
         </div>
 
@@ -549,9 +579,8 @@
             authGate.style.display = 'none';
             mainContent.style.display = 'block';
             document.body.style.overflow = 'auto';
-            // 系統解鎖後才進行初始化渲染
             updateProgressiveStart();
-            updateRentUI();
+            updateRentUI(); // 初始化租賃稅 UI
         } else {
             authGate.style.display = 'flex';
             mainContent.style.display = 'none';
@@ -567,7 +596,7 @@
     document.addEventListener('DOMContentLoaded', initAuth);
 
     // ==========================================
-    // 🌟 業務邏輯與精算引擎 (完全保留)
+    // 🌟 業務邏輯與精算引擎
     // ==========================================
 
     function switchTab(evt, tabId) {
@@ -788,10 +817,6 @@
                 </div>
                 <div>👉 房客每月應付： <b>${formatCurrency(rent)}</b> 元</div>
                 <div>👉 房東每月實收： <span class="result-highlight">${formatCurrency(rent)}</span> 元</div>
-                <hr style="margin: 10px 0; border: 0.5px dashed #63B3ED;">
-                <div style="font-size:0.9em; color:#4A5568;">
-                    📝 <b>專業提醒：</b> 雖無代扣義務，但房東仍須於隔年 5 月申報個人綜合所得稅。交給易丞地政作「社會住宅包租代管」，可享每月 1.5 萬合法免稅額！
-                </div>
             `;
         }
 
